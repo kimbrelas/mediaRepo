@@ -1,3 +1,15 @@
+mrBook:
+  columns:
+    name: string(255)
+
 mrGame:
+  columns:
+    name: string(255)
+
+mrMovie:
+  columns:
+    name: string(255)
+
+mrMusic:
   columns:
     name: string(255)
