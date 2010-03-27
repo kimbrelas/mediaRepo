@@ -2,6 +2,6 @@
 *.PHPEditProject
 *.project
 
-# cache and log files
+# cache and log
 cache/*
 log/*
