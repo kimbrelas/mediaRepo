@@ -1,4 +1,7 @@
-mediaRepo.PHPEditProject
-.project
+# project files
+*.PHPEditProject
+*.project
+
+# cache and log files
 cache/*
 log/*
