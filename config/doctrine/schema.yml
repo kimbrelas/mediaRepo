@@ -1,0 +1,3 @@
+mrGame:
+  columns:
+    name: string(255)
