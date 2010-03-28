@@ -13,11 +13,21 @@ abstract class BasemrBookFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'name' => new sfWidgetFormFilterInput(),
+      'name'     => new sfWidgetFormFilterInput(),
+      'medium'   => new sfWidgetFormFilterInput(),
+      'year'     => new sfWidgetFormFilterInput(),
+      'author'   => new sfWidgetFormFilterInput(),
+      'hardback' => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
+      'user_id'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('User'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
-      'name' => new sfValidatorPass(array('required' => false)),
+      'name'     => new sfValidatorPass(array('required' => false)),
+      'medium'   => new sfValidatorPass(array('required' => false)),
+      'year'     => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'author'   => new sfValidatorPass(array('required' => false)),
+      'hardback' => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
+      'user_id'  => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('User'), 'column' => 'id')),
     ));
 
     $this->widgetSchema->setNameFormat('mr_book_filters[%s]');
@@ -37,8 +47,13 @@ abstract class BasemrBookFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'id'   => 'Number',
-      'name' => 'Text',
+      'id'       => 'Number',
+      'name'     => 'Text',
+      'medium'   => 'Text',
+      'year'     => 'Number',
+      'author'   => 'Text',
+      'hardback' => 'Boolean',
+      'user_id'  => 'ForeignKey',
     );
   }
 }

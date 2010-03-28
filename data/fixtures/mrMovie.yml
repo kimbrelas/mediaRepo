@@ -1,0 +1,6 @@
+mrMovie:
+  mrMovie1:
+    name: Fixtures movie
+    medium: DVD
+    year: 1999
+    format: 16:9

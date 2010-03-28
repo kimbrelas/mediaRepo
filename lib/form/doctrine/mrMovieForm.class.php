@@ -10,7 +10,18 @@
  */
 class mrMovieForm extends BasemrMovieForm
 {
-  public function configure()
+  public function setup()
   {
+  	parent::setup();
+  	
+  	$this->useFields(array(
+  		'name',
+  		'medium',
+  		'year',
+  		'format'
+  	));
+  	
+  	$this->setWidget('medium', new sfWidgetFormChoice(array('choices' => $this->getObject()->getTable()->getMediums())));
+  	$this->setWidget('format', new sfWidgetFormChoice(array('expanded' => true, 'choices' => $this->getObject()->getTable()->getFormats())));
   }
 }

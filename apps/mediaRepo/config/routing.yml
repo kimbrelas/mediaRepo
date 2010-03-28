@@ -6,6 +6,13 @@ homepage:
   url:   /
   param: { module: default, action: index }
 
+movies:
+  class: sfDoctrineRouteCollection
+  options:
+    model:       mrMovie
+    module:      mrMovie
+    prefix_path: /movies
+    
 # generic rules
 # please, remove them by adding more specific rules
 default_index:

@@ -15,13 +15,21 @@ abstract class BasemrMovieForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'id'   => new sfWidgetFormInputHidden(),
-      'name' => new sfWidgetFormInputText(),
+      'id'      => new sfWidgetFormInputHidden(),
+      'name'    => new sfWidgetFormInputText(),
+      'medium'  => new sfWidgetFormInputText(),
+      'year'    => new sfWidgetFormInputText(),
+      'format'  => new sfWidgetFormInputText(),
+      'user_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('User'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
-      'id'   => new sfValidatorDoctrineChoice(array('model' => $this->getModelName(), 'column' => 'id', 'required' => false)),
-      'name' => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'id'      => new sfValidatorDoctrineChoice(array('model' => $this->getModelName(), 'column' => 'id', 'required' => false)),
+      'name'    => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'medium'  => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'year'    => new sfValidatorInteger(array('required' => false)),
+      'format'  => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'user_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('User'), 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('mr_movie[%s]');

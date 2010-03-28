@@ -24,3 +24,15 @@ sfContext::createInstance($configuration);
 
 // remove all cache
 sfToolkit::clearDirectory(sfConfig::get('sf_app_cache_dir'));
+
+// load data
+$dispatcher = new sfEventDispatcher();
+$formatter = new sfFormatter();
+$task = new sfDoctrineDataLoadTask($dispatcher, $formatter);
+
+$ret = $task->run();
+
+if ($ret)
+{
+	return $ret;
+}
