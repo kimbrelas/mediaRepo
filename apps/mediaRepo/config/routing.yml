@@ -6,6 +6,10 @@ homepage:
   url:   /
   param: { module: default, action: index }
 
+account:
+  url:   /account
+  param: { module: account, action: index }
+
 books:
   class: sfDoctrineRouteCollection
   options:
@@ -33,12 +37,3 @@ music:
     model:       mrMusic
     module:      mrMusic
     prefix_path: /music
-    
-# generic rules
-# please, remove them by adding more specific rules
-default_index:
-  url:   /:module
-  param: { action: index }
-
-default:
-  url:   /:module/:action/*
