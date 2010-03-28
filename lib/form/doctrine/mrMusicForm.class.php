@@ -10,7 +10,17 @@
  */
 class mrMusicForm extends BasemrMusicForm
 {
-  public function configure()
+	public function setup()
   {
+  	parent::setup();
+  	
+  	$this->useFields(array(
+  		'name',
+  		'medium',
+  		'year',
+  		'artist'
+  	));
+  	
+  	$this->setWidget('medium', new sfWidgetFormChoice(array('choices' => array_merge(array('' => 'Select one'), $this->getObject()->getTable()->getMediums()))));
   }
 }

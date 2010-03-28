@@ -1,0 +1,6 @@
+mrBook:
+  mrBook1:
+    name: Fixtures book
+    medium: Hardback
+    year: 1999
+    author: Fixtures

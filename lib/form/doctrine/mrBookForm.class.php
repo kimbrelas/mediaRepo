@@ -10,7 +10,17 @@
  */
 class mrBookForm extends BasemrBookForm
 {
-  public function configure()
+	public function setup()
   {
+  	parent::setup();
+  	
+  	$this->useFields(array(
+  		'name',
+  		'medium',
+  		'year',
+  		'author'
+  	));
+  	
+  	$this->setWidget('medium', new sfWidgetFormChoice(array('choices' => array_merge(array('' => 'Select one'), $this->getObject()->getTable()->getMediums()))));
   }
 }

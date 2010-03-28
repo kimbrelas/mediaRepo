@@ -11,8 +11,8 @@ class mrMovieTable extends Doctrine_Table
   public function getFormats()
   {
   	$formats = array(
-  		'16:9 - Wide',
-  		'4:3 - Full'
+  		'16:9 - Widescreen',
+  		'4:3 - Fullscreen'
   	);
   	
   	return array_combine($formats, $formats);

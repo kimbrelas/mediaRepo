@@ -4,7 +4,6 @@ mrBook:
     medium:   string(255)
     year:     integer(4)
     author:   string(255)
-    hardback: boolean
     user_id:  integer(4)
   relations:
     User:

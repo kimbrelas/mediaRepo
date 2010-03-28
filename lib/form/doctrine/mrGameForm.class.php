@@ -10,7 +10,18 @@
  */
 class mrGameForm extends BasemrGameForm
 {
-  public function configure()
+	public function setup()
   {
+  	parent::setup();
+  	
+  	$this->useFields(array(
+  		'name',
+  		'medium',
+  		'year',
+  		'platform'
+  	));
+  	
+  	$this->setWidget('medium', new sfWidgetFormChoice(array('choices' => array_merge(array('' => 'Select one'), $this->getObject()->getTable()->getMediums()))));
+  	$this->setWidget('platform', new sfWidgetFormChoice(array('choices' => array_merge(array('' => 'Select one'), $this->getObject()->getTable()->getPlatforms()))));
   }
 }

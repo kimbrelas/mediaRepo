@@ -21,7 +21,7 @@ class mrMovieForm extends BasemrMovieForm
   		'format'
   	));
   	
-  	$this->setWidget('medium', new sfWidgetFormChoice(array('choices' => $this->getObject()->getTable()->getMediums())));
-  	$this->setWidget('format', new sfWidgetFormChoice(array('expanded' => true, 'choices' => $this->getObject()->getTable()->getFormats())));
+  	$this->setWidget('medium', new sfWidgetFormChoice(array('choices' => array_merge(array('' => 'Select one'), $this->getObject()->getTable()->getMediums()))));
+  	$this->setWidget('format', new sfWidgetFormChoice(array('choices' => array_merge(array('' => 'Select one'), $this->getObject()->getTable()->getFormats()))));
   }
 }

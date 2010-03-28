@@ -9,24 +9,21 @@
  * @property string $medium
  * @property integer $year
  * @property string $author
- * @property boolean $hardback
  * @property integer $user_id
  * @property sfGuardUser $User
  * 
- * @method string      getName()     Returns the current record's "name" value
- * @method string      getMedium()   Returns the current record's "medium" value
- * @method integer     getYear()     Returns the current record's "year" value
- * @method string      getAuthor()   Returns the current record's "author" value
- * @method boolean     getHardback() Returns the current record's "hardback" value
- * @method integer     getUserId()   Returns the current record's "user_id" value
- * @method sfGuardUser getUser()     Returns the current record's "User" value
- * @method mrBook      setName()     Sets the current record's "name" value
- * @method mrBook      setMedium()   Sets the current record's "medium" value
- * @method mrBook      setYear()     Sets the current record's "year" value
- * @method mrBook      setAuthor()   Sets the current record's "author" value
- * @method mrBook      setHardback() Sets the current record's "hardback" value
- * @method mrBook      setUserId()   Sets the current record's "user_id" value
- * @method mrBook      setUser()     Sets the current record's "User" value
+ * @method string      getName()    Returns the current record's "name" value
+ * @method string      getMedium()  Returns the current record's "medium" value
+ * @method integer     getYear()    Returns the current record's "year" value
+ * @method string      getAuthor()  Returns the current record's "author" value
+ * @method integer     getUserId()  Returns the current record's "user_id" value
+ * @method sfGuardUser getUser()    Returns the current record's "User" value
+ * @method mrBook      setName()    Sets the current record's "name" value
+ * @method mrBook      setMedium()  Sets the current record's "medium" value
+ * @method mrBook      setYear()    Sets the current record's "year" value
+ * @method mrBook      setAuthor()  Sets the current record's "author" value
+ * @method mrBook      setUserId()  Sets the current record's "user_id" value
+ * @method mrBook      setUser()    Sets the current record's "User" value
  * 
  * @package    mediaRepo
  * @subpackage model
@@ -53,9 +50,6 @@ abstract class BasemrBook extends sfDoctrineRecord
         $this->hasColumn('author', 'string', 255, array(
              'type' => 'string',
              'length' => '255',
-             ));
-        $this->hasColumn('hardback', 'boolean', null, array(
-             'type' => 'boolean',
              ));
         $this->hasColumn('user_id', 'integer', 4, array(
              'type' => 'integer',

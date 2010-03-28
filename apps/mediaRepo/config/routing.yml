@@ -6,12 +6,33 @@ homepage:
   url:   /
   param: { module: default, action: index }
 
+books:
+  class: sfDoctrineRouteCollection
+  options:
+    model:       mrBook
+    module:      mrBook
+    prefix_path: /books
+
+games:
+  class: sfDoctrineRouteCollection
+  options:
+    model:       mrGame
+    module:      mrGame
+    prefix_path: /games
+
 movies:
   class: sfDoctrineRouteCollection
   options:
     model:       mrMovie
     module:      mrMovie
     prefix_path: /movies
+    
+music:
+  class: sfDoctrineRouteCollection
+  options:
+    model:       mrMusic
+    module:      mrMusic
+    prefix_path: /music
     
 # generic rules
 # please, remove them by adding more specific rules

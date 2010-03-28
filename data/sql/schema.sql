@@ -1,4 +1,4 @@
-CREATE TABLE mr_book (id BIGINT AUTO_INCREMENT, name VARCHAR(255), medium VARCHAR(255), year INT, author VARCHAR(255), hardback TINYINT(1), user_id INT, INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE mr_book (id BIGINT AUTO_INCREMENT, name VARCHAR(255), medium VARCHAR(255), year INT, author VARCHAR(255), user_id INT, INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE mr_game (id BIGINT AUTO_INCREMENT, name VARCHAR(255), medium VARCHAR(255), year INT, platform VARCHAR(255), user_id INT, INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE mr_movie (id BIGINT AUTO_INCREMENT, name VARCHAR(255), medium VARCHAR(255), year INT, format VARCHAR(255), user_id INT, INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE mr_music (id BIGINT AUTO_INCREMENT, name VARCHAR(255), medium VARCHAR(255), year INT, artist VARCHAR(255), user_id INT, INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
