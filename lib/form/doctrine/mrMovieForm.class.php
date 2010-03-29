@@ -23,6 +23,11 @@ class mrMovieForm extends BasemrMovieForm
   	
   	$this->setWidget('medium', new sfWidgetFormChoice(array('choices' => array_merge(array('' => 'Select one'), $this->getObject()->getTable()->getMediums()))));
   	$this->setWidget('format', new sfWidgetFormChoice(array('choices' => array_merge(array('' => 'Select one'), $this->getObject()->getTable()->getFormats()))));
+  	
+  	$this->validatorSchema['name']->setOption('required', true);
+  	$this->validatorSchema['medium']->setOption('required', true);
+  	$this->validatorSchema['year']->setOption('required', true);
+  	$this->validatorSchema['format']->setOption('required', true);
   }
   
 	public function doSave($con = null)

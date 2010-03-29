@@ -22,6 +22,11 @@ class mrMusicForm extends BasemrMusicForm
   	));
   	
   	$this->setWidget('medium', new sfWidgetFormChoice(array('choices' => array_merge(array('' => 'Select one'), $this->getObject()->getTable()->getMediums()))));
+  	
+  	$this->validatorSchema['name']->setOption('required', true);
+  	$this->validatorSchema['medium']->setOption('required', true);
+  	$this->validatorSchema['year']->setOption('required', true);
+  	$this->validatorSchema['artist']->setOption('required', true);
   }
   
 	public function doSave($con = null)

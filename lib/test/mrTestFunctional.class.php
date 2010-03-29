@@ -2,11 +2,11 @@
 
 class mrTestFunctional extends sfTestFunctional
 {
-	public function login($user = 'admin')
+	public function login($user = 'admin', $password = 'admin')
 	{
 		$this->info('Logging in as '.$user)
 			->get('/login')
-			->click('sign in', array('signin' => array('username' => 'admin', 'password' => 'admin')))
+			->click('sign in', array('signin' => array('username' => $user, 'password' => $password)))
 			
 			->with('form')->begin()
 				->hasErrors(0)
