@@ -1,0 +1,25 @@
+sfGuardUser:
+  sfGuardUser1:
+    username:       admin
+    password:       admin
+    is_super_admin: true
+
+sfGuardPermission:
+  sfGuardPermission1:
+    name:        admin
+    description: Administrator permission
+
+sfGuardGroup:
+  sfGuardGroup1:
+    name:        admin
+    description: Administrator group
+
+sfGuardGroupPermission:
+  sfGuardGroupPermission1:
+    sfGuardGroup:      sfGuardGroup1
+    sfGuardPermission: sfGuardPermission1
+
+sfGuardUserGroup:
+  sfGuardUserGroup1:
+    sfGuardGroup: sfGuardGroup1
+    sfGuardUser:  sfGuardUser1

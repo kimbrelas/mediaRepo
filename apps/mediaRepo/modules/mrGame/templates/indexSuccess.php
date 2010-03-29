@@ -1,28 +1,24 @@
-<h1>Games List</h1>
+<h1>Your Games</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Id</th>
       <th>Name</th>
       <th>Medium</th>
       <th>Year</th>
       <th>Platform</th>
-      <th>User</th>
     </tr>
   </thead>
   <tbody>
-    <?php foreach ($Games as $Game): ?>
+    <?php foreach ($games as $game): ?>
     <tr>
-      <td><a href="<?php echo url_for('mrGame/show?id='.$Game->getId()) ?>"><?php echo $Game->getId() ?></a></td>
-      <td><?php echo $Game->getName() ?></td>
-      <td><?php echo $Game->getMedium() ?></td>
-      <td><?php echo $Game->getYear() ?></td>
-      <td><?php echo $Game->getPlatform() ?></td>
-      <td><?php echo $Game->getUserId() ?></td>
+      <td><a href="<?php echo url_for('games_show', $game) ?>"><?php echo $game->name ?></a></td>
+      <td><?php echo $game->medium ?></td>
+      <td><?php echo $game->year ?></td>
+      <td><?php echo $game->platform ?></td>
     </tr>
     <?php endforeach; ?>
   </tbody>
 </table>
 
-  <a href="<?php echo url_for('mrGame/new') ?>">New</a>
+<a href="<?php echo url_for('games_new') ?>">Add Game</a>

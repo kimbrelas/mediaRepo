@@ -24,4 +24,14 @@ class mrMovieForm extends BasemrMovieForm
   	$this->setWidget('medium', new sfWidgetFormChoice(array('choices' => array_merge(array('' => 'Select one'), $this->getObject()->getTable()->getMediums()))));
   	$this->setWidget('format', new sfWidgetFormChoice(array('choices' => array_merge(array('' => 'Select one'), $this->getObject()->getTable()->getFormats()))));
   }
+  
+	public function doSave($con = null)
+  {
+  	if($this->getObject()->isNew())
+  	{
+  		$this->getObject()->user_id = sfContext::getInstance()->getUser()->getGuardUser()->id;
+  	}
+  	
+  	parent::doSave($con);
+  }
 }

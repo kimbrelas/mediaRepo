@@ -2,9 +2,10 @@
 
 include(dirname(__FILE__).'/../../bootstrap/functional.php');
 
-$browser = new sfTestFunctional(new sfBrowser());
+$browser = new mrTestFunctional(new sfBrowser());
 
-$browser
+$browser->login()
+
 	->get('/games')
 
   ->with('request')->begin()
@@ -17,7 +18,7 @@ $browser
     ->matches('!/Gears of War/')
   ->end()
   
-  ->click('New')
+  ->click('Add Game')
   
   ->with('request')->begin()
     ->isParameter('module', 'mrGame')

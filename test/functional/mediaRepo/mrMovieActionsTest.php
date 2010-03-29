@@ -2,9 +2,10 @@
 
 include(dirname(__FILE__).'/../../bootstrap/functional.php');
 
-$browser = new sfTestFunctional(new sfBrowser());
+$browser = new mrTestFunctional(new sfBrowser());
 
-$browser
+$browser->login()
+
 	->get('/movies')
 
   ->with('request')->begin()
@@ -17,7 +18,7 @@ $browser
     ->matches('!/Pretty Woman/')
   ->end()
   
-  ->click('New')
+  ->click('Add Movie')
   
   ->with('request')->begin()
     ->isParameter('module', 'mrMovie')

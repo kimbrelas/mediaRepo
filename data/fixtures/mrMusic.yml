@@ -1,6 +1,7 @@
 mrMusic:
   mrMusic1:
-    name: Fixtures music
+    name:   Fixtures music
     medium: CD
-    year: 1999
+    year:   1999
     artist: Fixtures
+    User:   sfGuardUser1

@@ -1,34 +1,23 @@
+<h1><?php echo $movie->name ?></h1>
 <table>
   <tbody>
     <tr>
-      <th>Id:</th>
-      <td><?php echo $Movie->getId() ?></td>
-    </tr>
-    <tr>
-      <th>Name:</th>
-      <td><?php echo $Movie->getName() ?></td>
-    </tr>
-    <tr>
       <th>Medium:</th>
-      <td><?php echo $Movie->getMedium() ?></td>
+      <td><?php echo $movie->medium ?></td>
     </tr>
     <tr>
       <th>Year:</th>
-      <td><?php echo $Movie->getYear() ?></td>
+      <td><?php echo $movie->year ?></td>
     </tr>
     <tr>
       <th>Format:</th>
-      <td><?php echo $Movie->getFormat() ?></td>
-    </tr>
-    <tr>
-      <th>User:</th>
-      <td><?php echo $Movie->getUserId() ?></td>
+      <td><?php echo $movie->format ?></td>
     </tr>
   </tbody>
 </table>
 
 <hr />
 
-<a href="<?php echo url_for('mrMovie/edit?id='.$Movie->getId()) ?>">Edit</a>
+<a href="<?php echo url_for('movies_edit', $movie) ?>">Edit</a>
 &nbsp;
-<a href="<?php echo url_for('mrMovie/index') ?>">List</a>
+<a href="<?php echo url_for('movies') ?>">List</a>

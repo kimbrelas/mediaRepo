@@ -1,34 +1,23 @@
+<h1><?php echo $game->name ?></h1>
 <table>
   <tbody>
     <tr>
-      <th>Id:</th>
-      <td><?php echo $Game->getId() ?></td>
-    </tr>
-    <tr>
-      <th>Name:</th>
-      <td><?php echo $Game->getName() ?></td>
-    </tr>
-    <tr>
       <th>Medium:</th>
-      <td><?php echo $Game->getMedium() ?></td>
+      <td><?php echo $game->medium ?></td>
     </tr>
     <tr>
       <th>Year:</th>
-      <td><?php echo $Game->getYear() ?></td>
+      <td><?php echo $game->year ?></td>
     </tr>
     <tr>
       <th>Platform:</th>
-      <td><?php echo $Game->getPlatform() ?></td>
-    </tr>
-    <tr>
-      <th>User:</th>
-      <td><?php echo $Game->getUserId() ?></td>
+      <td><?php echo $game->platform ?></td>
     </tr>
   </tbody>
 </table>
 
 <hr />
 
-<a href="<?php echo url_for('mrGame/edit?id='.$Game->getId()) ?>">Edit</a>
+<a href="<?php echo url_for('games_edit', $game) ?>">Edit</a>
 &nbsp;
-<a href="<?php echo url_for('mrGame/index') ?>">List</a>
+<a href="<?php echo url_for('games') ?>">List</a>

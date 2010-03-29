@@ -1,34 +1,22 @@
+<h1><?php echo $music->name ?></h1>
 <table>
   <tbody>
     <tr>
-      <th>Id:</th>
-      <td><?php echo $Music->getId() ?></td>
-    </tr>
-    <tr>
-      <th>Name:</th>
-      <td><?php echo $Music->getName() ?></td>
-    </tr>
-    <tr>
       <th>Medium:</th>
-      <td><?php echo $Music->getMedium() ?></td>
+      <td><?php echo $music->medium ?></td>
     </tr>
     <tr>
       <th>Year:</th>
-      <td><?php echo $Music->getYear() ?></td>
+      <td><?php echo $music->year ?></td>
     </tr>
     <tr>
       <th>Artist:</th>
-      <td><?php echo $Music->getArtist() ?></td>
+      <td><?php echo $music->artist ?></td>
     </tr>
-    <tr>
-      <th>User:</th>
-      <td><?php echo $Music->getUserId() ?></td>
-    </tr>
-  </tbody>
 </table>
 
 <hr />
 
-<a href="<?php echo url_for('mrMusic/edit?id='.$Music->getId()) ?>">Edit</a>
+<a href="<?php echo url_for('music_edit', $music) ?>">Edit</a>
 &nbsp;
-<a href="<?php echo url_for('mrMusic/index') ?>">List</a>
+<a href="<?php echo url_for('music') ?>">List</a>

@@ -1,6 +1,7 @@
 mrGame:
   mrGame1:
-    name: Fixtures game
-    medium: Disc
-    year: 1999
+    name:     Fixtures game
+    medium:   Disc
+    year:     1999
     platform: Playstation 3
+    User:     sfGuardUser1

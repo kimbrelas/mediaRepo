@@ -24,4 +24,14 @@ class mrGameForm extends BasemrGameForm
   	$this->setWidget('medium', new sfWidgetFormChoice(array('choices' => array_merge(array('' => 'Select one'), $this->getObject()->getTable()->getMediums()))));
   	$this->setWidget('platform', new sfWidgetFormChoice(array('choices' => array_merge(array('' => 'Select one'), $this->getObject()->getTable()->getPlatforms()))));
   }
+  
+	public function doSave($con = null)
+  {
+  	if($this->getObject()->isNew())
+  	{
+  		$this->getObject()->user_id = sfContext::getInstance()->getUser()->getGuardUser()->id;
+  	}
+  	
+  	parent::doSave($con);
+  }
 }

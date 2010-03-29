@@ -12,12 +12,17 @@ class mrMusicActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->Music = $this->getRoute()->getObjects();
+    $this->musics = Doctrine_Query::create()
+    	->from('mrMusic m')
+    	->where('m.user_id = ?', $this->getUser()->getGuardUser()->id)
+    	->execute();
   }
 
   public function executeShow(sfWebRequest $request)
   {
-    $this->Music = $this->getRoute()->getObject();
+  	$this->verifyOwner();
+  	
+    $this->music = $this->getRoute()->getObject();
   }
 
   public function executeNew(sfWebRequest $request)
@@ -36,6 +41,8 @@ class mrMusicActions extends sfActions
 
   public function executeEdit(sfWebRequest $request)
   {
+  	$this->verifyOwner();
+  	
     $this->form = new mrMusicForm($this->getRoute()->getObject());
   }
 
@@ -62,9 +69,9 @@ class mrMusicActions extends sfActions
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
-      $Music = $form->save();
+      $music = $form->save();
 
-      $this->redirect('mrMusic/edit?id='.$Music->getId());
+      $this->redirect('mrMusic/edit?id='.$music->getId());
     }
   }
 }

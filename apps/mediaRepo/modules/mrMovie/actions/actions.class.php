@@ -12,12 +12,17 @@ class mrMovieActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->Movies = $this->getRoute()->getObjects();
+    $this->movies = Doctrine_Query::create()
+    	->from('mrMovie m')
+    	->where('m.user_id = ?', $this->getUser()->getGuardUser()->id)
+    	->execute();
   }
 
   public function executeShow(sfWebRequest $request)
   {
-    $this->Movie = $this->getRoute()->getObject();
+  	$this->verifyOwner();
+  	
+    $this->movie = $this->getRoute()->getObject();
   }
 
   public function executeNew(sfWebRequest $request)
@@ -36,6 +41,8 @@ class mrMovieActions extends sfActions
 
   public function executeEdit(sfWebRequest $request)
   {
+  	$this->verifyOwner();
+  	
     $this->form = new mrMovieForm($this->getRoute()->getObject());
   }
 
@@ -62,9 +69,9 @@ class mrMovieActions extends sfActions
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
-      $Movie = $form->save();
+      $movie = $form->save();
 
-      $this->redirect('mrMovie/edit?id='.$Movie->getId());
+      $this->redirect('mrMovie/edit?id='.$movie->getId());
     }
   }
 }

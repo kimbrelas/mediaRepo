@@ -2,9 +2,10 @@
 
 include(dirname(__FILE__).'/../../bootstrap/functional.php');
 
-$browser = new sfTestFunctional(new sfBrowser());
+$browser = new mrTestFunctional(new sfBrowser());
 
-$browser
+$browser->login()
+
 	->get('/music')
 
   ->with('request')->begin()
@@ -17,7 +18,7 @@ $browser
     ->matches('!/In the Aeroplane Over the Sea/')
   ->end()
   
-  ->click('New')
+  ->click('Add Music')
   
   ->with('request')->begin()
     ->isParameter('module', 'mrMusic')

@@ -1,34 +1,24 @@
+<h1><?php echo $book->name ?></h1>
+
 <table>
   <tbody>
     <tr>
-      <th>Id:</th>
-      <td><?php echo $Book->getId() ?></td>
-    </tr>
-    <tr>
-      <th>Name:</th>
-      <td><?php echo $Book->getName() ?></td>
-    </tr>
-    <tr>
       <th>Medium:</th>
-      <td><?php echo $Book->getMedium() ?></td>
+      <td><?php echo $book->medium ?></td>
     </tr>
     <tr>
       <th>Year:</th>
-      <td><?php echo $Book->getYear() ?></td>
+      <td><?php echo $book->year ?></td>
     </tr>
     <tr>
       <th>Author:</th>
-      <td><?php echo $Book->getAuthor() ?></td>
-    </tr>
-    <tr>
-      <th>User:</th>
-      <td><?php echo $Book->getUserId() ?></td>
+      <td><?php echo $book->author ?></td>
     </tr>
   </tbody>
 </table>
 
 <hr />
 
-<a href="<?php echo url_for('mrBook/edit?id='.$Book->getId()) ?>">Edit</a>
+<a href="<?php echo url_for('books_edit', $book) ?>">Edit</a>
 &nbsp;
-<a href="<?php echo url_for('mrBook/index') ?>">List</a>
+<a href="<?php echo url_for('books') ?>">List</a>

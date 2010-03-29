@@ -10,7 +10,7 @@
       <tr>
         <td colspan="2">
           <?php echo $form->renderHiddenFields(false) ?>
-          &nbsp;<a href="<?php echo url_for('mrMusic/index') ?>">Back to list</a>
+          &nbsp;<a href="<?php echo url_for('music') ?>">Back to list</a>
           <?php if (!$form->getObject()->isNew()): ?>
             &nbsp;<?php echo link_to('Delete', 'mrMusic/delete?id='.$form->getObject()->getId(), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?>
           <?php endif; ?>
@@ -20,34 +20,11 @@
     </tfoot>
     <tbody>
       <?php echo $form->renderGlobalErrors() ?>
-      <tr>
-        <th><?php echo $form['name']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['name']->renderError() ?>
-          <?php echo $form['name'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['medium']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['medium']->renderError() ?>
-          <?php echo $form['medium'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['year']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['year']->renderError() ?>
-          <?php echo $form['year'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['artist']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['artist']->renderError() ?>
-          <?php echo $form['artist'] ?>
-        </td>
-      </tr>
+      
+      <?php echo $form['name']->renderRow() ?>
+      <?php echo $form['medium']->renderRow() ?>
+      <?php echo $form['year']->renderRow() ?>
+      <?php echo $form['artist']->renderRow() ?>
     </tbody>
   </table>
 </form>

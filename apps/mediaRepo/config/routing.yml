@@ -4,11 +4,21 @@
 # default rules
 homepage:
   url:   /
-  param: { module: default, action: index }
+  param: { module: account, action: index }
 
 account:
   url:   /account
   param: { module: account, action: index }
+
+register:
+  url:   /register
+  param: { module: account, action: register }
+
+register_submit:
+  url:   /register-submit
+  param: { module: account, action: registerSubmit }
+  requirements:
+    sf_method: [post]
 
 books:
   class: sfDoctrineRouteCollection
@@ -37,3 +47,15 @@ music:
     model:       mrMusic
     module:      mrMusic
     prefix_path: /music
+    
+sf_guard_signin:
+  url:   /login
+  param: { module: sfGuardAuth, action: signin }
+
+sf_guard_signout:
+  url:   /logout
+  param: { module: sfGuardAuth, action: signout }
+
+sf_guard_password:
+  url:   /request_password
+  param: { module: sfGuardAuth, action: password }

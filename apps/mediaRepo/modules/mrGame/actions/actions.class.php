@@ -12,12 +12,17 @@ class mrGameActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->Games = $this->getRoute()->getObjects();
+    $this->games = Doctrine_Query::create()
+    	->from('mrGame g')
+    	->where('g.user_id = ?', $this->getUser()->getGuardUser()->id)
+    	->execute();
   }
 
   public function executeShow(sfWebRequest $request)
   {
-    $this->Game = $this->getRoute()->getObject();
+  	$this->verifyOwner();
+  	
+    $this->game = $this->getRoute()->getObject();
   }
 
   public function executeNew(sfWebRequest $request)
@@ -36,6 +41,8 @@ class mrGameActions extends sfActions
 
   public function executeEdit(sfWebRequest $request)
   {
+  	$this->verifyOwner();
+  	
     $this->form = new mrGameForm($this->getRoute()->getObject());
   }
 
@@ -62,9 +69,9 @@ class mrGameActions extends sfActions
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
-      $Game = $form->save();
+      $game = $form->save();
 
-      $this->redirect('mrGame/edit?id='.$Game->getId());
+      $this->redirect('mrGame/edit?id='.$game->getId());
     }
   }
 }

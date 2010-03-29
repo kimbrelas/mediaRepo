@@ -1,6 +1,7 @@
 mrBook:
   mrBook1:
-    name: Fixtures book
+    name:   Fixtures book
     medium: Hardback
-    year: 1999
+    year:   1999
     author: Fixtures
+    User:   sfGuardUser1
