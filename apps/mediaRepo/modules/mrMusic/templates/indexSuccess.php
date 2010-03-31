@@ -1,6 +1,4 @@
-<h1>Your Music</h1>
-
-<table>
+<table width="100%">
   <thead>
     <tr>
       <th>Name</th>
@@ -21,4 +19,5 @@
   </tbody>
 </table>
 
+<br />
 <a href="<?php echo url_for('music_new') ?>">Add Music</a>

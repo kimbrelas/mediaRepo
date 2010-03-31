@@ -1,6 +1,4 @@
-<h1>Your Games</h1>
-
-<table>
+<table width="100%">
   <thead>
     <tr>
       <th>Name</th>
@@ -21,4 +19,5 @@
   </tbody>
 </table>
 
+<br />
 <a href="<?php echo url_for('games_new') ?>">Add Game</a>

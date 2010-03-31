@@ -1,6 +1,4 @@
-<h1>Your Movies</h1>
-
-<table>
+<table width="100%">
   <thead>
     <tr>
       <th>Name</th>
@@ -21,4 +19,5 @@
   </tbody>
 </table>
 
+<br />
 <a href="<?php echo url_for('movies_new') ?>">Add Movie</a>
