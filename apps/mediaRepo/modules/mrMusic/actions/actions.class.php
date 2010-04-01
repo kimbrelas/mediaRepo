@@ -17,7 +17,20 @@ class mrMusicActions extends mrActions
     	->where('m.user_id = ?', $this->getUser()->getGuardUser()->id)
     	->execute();
   }
-
+	
+  public function executeProcessiTunesXml(sfWebRequest $request)
+  {
+  	$music = new mrMusic();
+  	$music->name = 'iTunes XML';
+  	$music->medium = 'CD';
+  	$music->year = '2009';
+  	$music->artist = 'Adam Kimbrel';
+  	$music->save();
+  	
+  	$this->renderText('testing');
+  	return sfView::NONE;
+  }
+  
   public function executeShow(sfWebRequest $request)
   {
   	$this->verifyOwner();

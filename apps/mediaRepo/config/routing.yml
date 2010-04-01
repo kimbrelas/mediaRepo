@@ -10,16 +10,6 @@ account:
   url:   /account
   param: { module: account, action: index }
 
-register:
-  url:   /register
-  param: { module: account, action: register }
-
-register_submit:
-  url:   /register-submit
-  param: { module: account, action: registerSubmit }
-  requirements:
-    sf_method: [post]
-
 books:
   class: sfDoctrineRouteCollection
   options:
@@ -47,7 +37,22 @@ music:
     model:       mrMusic
     module:      mrMusic
     prefix_path: /music
-    
+
+process_itunes_xml:
+  url: /process-itunes-xml
+  param: { module: mrMusic, action: processiTunesXml }
+
+register:
+  url:   /register
+  param: { module: account, action: register }
+
+register_submit:
+  url:   /register-submit
+  param: { module: account, action: registerSubmit }
+  requirements:
+    sf_method: [post]
+
+
 sf_guard_signin:
   url:   /login
   param: { module: sfGuardAuth, action: signin }
