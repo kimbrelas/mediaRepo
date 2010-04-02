@@ -20,14 +20,12 @@ class mrMusicActions extends mrActions
 	
   public function executeProcessiTunesXml(sfWebRequest $request)
   {
-  	$music = new mrMusic();
-  	$music->name = 'iTunes XML';
-  	$music->medium = 'CD';
-  	$music->year = '2009';
-  	$music->artist = 'Adam Kimbrel';
-  	$music->save();
+  	$user = Doctrine_Core::getTable('sfGuardUser')->findOneByUsername('admin');
+  	$xmlString = file_get_contents('php://input');
   	
-  	$this->renderText('testing');
+  	$itunes = new iTunesLibrary($xmlString, $user);
+  	$itunes->save();
+  	
   	return sfView::NONE;
   }
   
