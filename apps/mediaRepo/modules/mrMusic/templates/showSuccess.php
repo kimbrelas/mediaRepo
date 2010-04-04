@@ -16,9 +16,11 @@
     <tr>
     	<th>Songs:</th>
     	<td>
-    		<?php foreach($music->Songs as $song): ?>
-    			<?php echo $song->name ?><br />
-    		<?php endforeach; ?>
+    		<ul id="sortable">
+	    		<?php foreach($music->Songs as $song): ?>
+	    			<li id="<?php echo $song->id; ?>"><?php echo $song->name; ?></li>
+	    		<?php endforeach; ?>
+	    	</ul>
     		<a href="<?php echo url_for('music_addSong', $music) ?>">Add Song</a>
     	</td>
     </tr>
@@ -29,3 +31,17 @@
 <a href="<?php echo url_for('music_edit', $music) ?>">Edit</a>
 &nbsp;
 <a href="<?php echo url_for('music') ?>">List</a>
+
+<script type="text/javascript">
+	$(function() {
+		$("#sortable").sortable({
+			update: function(event, ui) {
+				$.post(
+					"<?php echo url_for('music_orderSongs', $music) ?>",
+					{ songs: $('#sortable').sortable('toArray') }
+				);	
+			}
+		});
+		$("#sortable").disableSelection();
+	});
+</script>

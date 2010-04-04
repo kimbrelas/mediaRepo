@@ -108,6 +108,7 @@ class iTunesLibrary
   			$s = new mrSong();
   			$s->name = $song['Name'];
   			$s->Album = $album;
+  			$s->position = $song['Track Number'];
   			$s->save();
   		}
   	}

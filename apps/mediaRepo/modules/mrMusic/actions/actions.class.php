@@ -18,6 +18,14 @@ class mrMusicActions extends mrActions
     	->execute();
   }
 	
+	public function executeOrderSongs(sfWebRequest $request)
+  {
+  	$album = $this->getRoute()->getObject();
+  	$album->orderSongs($request->getParameter('songs'));
+  	
+  	return sfView::NONE;
+  }
+  
   public function executeAddSong(sfWebRequest $request)
   {
   	$song = new mrSong();
@@ -41,8 +49,8 @@ class mrMusicActions extends mrActions
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
-      $song = $form->save();
-
+    	$song = $form->save();
+			
       $this->redirect($this->generateUrl('music_show', $song->Album));
     }
   }

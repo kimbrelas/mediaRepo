@@ -37,7 +37,7 @@ music:
     model:       mrMusic
     module:      mrMusic
     prefix_path: /music
-    object_actions: { addSong: get, addSongSubmit: post }
+    object_actions: { addSong: get, addSongSubmit: post, orderSongs: post }
 
 process_itunes_xml:
   url: /process-itunes-xml

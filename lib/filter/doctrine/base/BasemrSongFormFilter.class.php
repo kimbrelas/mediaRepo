@@ -15,11 +15,13 @@ abstract class BasemrSongFormFilter extends BaseFormFilterDoctrine
     $this->setWidgets(array(
       'name'     => new sfWidgetFormFilterInput(),
       'album_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Album'), 'add_empty' => true)),
+      'position' => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
       'name'     => new sfValidatorPass(array('required' => false)),
       'album_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Album'), 'column' => 'id')),
+      'position' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
     $this->widgetSchema->setNameFormat('mr_song_filters[%s]');
@@ -42,6 +44,7 @@ abstract class BasemrSongFormFilter extends BaseFormFilterDoctrine
       'id'       => 'Number',
       'name'     => 'Text',
       'album_id' => 'ForeignKey',
+      'position' => 'Number',
     );
   }
 }

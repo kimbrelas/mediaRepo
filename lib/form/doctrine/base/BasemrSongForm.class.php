@@ -18,12 +18,14 @@ abstract class BasemrSongForm extends BaseFormDoctrine
       'id'       => new sfWidgetFormInputHidden(),
       'name'     => new sfWidgetFormInputText(),
       'album_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Album'), 'add_empty' => true)),
+      'position' => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
       'id'       => new sfValidatorDoctrineChoice(array('model' => $this->getModelName(), 'column' => 'id', 'required' => false)),
       'name'     => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'album_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Album'), 'required' => false)),
+      'position' => new sfValidatorInteger(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('mr_song[%s]');
