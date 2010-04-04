@@ -13,6 +13,15 @@
       <th>Artist:</th>
       <td><?php echo $music->artist ?></td>
     </tr>
+    <tr>
+    	<th>Songs:</th>
+    	<td>
+    		<?php foreach($music->Songs as $song): ?>
+    			<?php echo $song->name ?><br />
+    		<?php endforeach; ?>
+    		<a href="<?php echo url_for('music_addSong', $music) ?>">Add Song</a>
+    	</td>
+    </tr>
 </table>
 
 <hr />

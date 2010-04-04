@@ -2,6 +2,7 @@ CREATE TABLE mr_book (id BIGINT AUTO_INCREMENT, name VARCHAR(255), medium VARCHA
 CREATE TABLE mr_game (id BIGINT AUTO_INCREMENT, name VARCHAR(255), medium VARCHAR(255), year INT, platform VARCHAR(255), user_id INT, INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE mr_movie (id BIGINT AUTO_INCREMENT, name VARCHAR(255), medium VARCHAR(255), year INT, format VARCHAR(255), user_id INT, INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE mr_music (id BIGINT AUTO_INCREMENT, name VARCHAR(255), medium VARCHAR(255), year INT, artist VARCHAR(255), user_id INT, INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE mr_song (id BIGINT AUTO_INCREMENT, name VARCHAR(255), album_id BIGINT, INDEX album_id_idx (album_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE sf_guard_group (id INT AUTO_INCREMENT, name VARCHAR(255) UNIQUE, description TEXT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE sf_guard_group_permission (group_id INT, permission_id INT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(group_id, permission_id)) ENGINE = INNODB;
 CREATE TABLE sf_guard_permission (id INT AUTO_INCREMENT, name VARCHAR(255) UNIQUE, description TEXT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
@@ -13,6 +14,7 @@ ALTER TABLE mr_book ADD CONSTRAINT mr_book_user_id_sf_guard_user_id FOREIGN KEY 
 ALTER TABLE mr_game ADD CONSTRAINT mr_game_user_id_sf_guard_user_id FOREIGN KEY (user_id) REFERENCES sf_guard_user(id) ON DELETE CASCADE;
 ALTER TABLE mr_movie ADD CONSTRAINT mr_movie_user_id_sf_guard_user_id FOREIGN KEY (user_id) REFERENCES sf_guard_user(id) ON DELETE CASCADE;
 ALTER TABLE mr_music ADD CONSTRAINT mr_music_user_id_sf_guard_user_id FOREIGN KEY (user_id) REFERENCES sf_guard_user(id) ON DELETE CASCADE;
+ALTER TABLE mr_song ADD CONSTRAINT mr_song_album_id_mr_music_id FOREIGN KEY (album_id) REFERENCES mr_music(id) ON DELETE CASCADE;
 ALTER TABLE sf_guard_group_permission ADD CONSTRAINT sf_guard_group_permission_permission_id_sf_guard_permission_id FOREIGN KEY (permission_id) REFERENCES sf_guard_permission(id) ON DELETE CASCADE;
 ALTER TABLE sf_guard_group_permission ADD CONSTRAINT sf_guard_group_permission_group_id_sf_guard_group_id FOREIGN KEY (group_id) REFERENCES sf_guard_group(id) ON DELETE CASCADE;
 ALTER TABLE sf_guard_remember_key ADD CONSTRAINT sf_guard_remember_key_user_id_sf_guard_user_id FOREIGN KEY (user_id) REFERENCES sf_guard_user(id) ON DELETE CASCADE;

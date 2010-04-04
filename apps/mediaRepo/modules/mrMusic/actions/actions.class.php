@@ -18,6 +18,35 @@ class mrMusicActions extends mrActions
     	->execute();
   }
 	
+  public function executeAddSong(sfWebRequest $request)
+  {
+  	$song = new mrSong();
+  	$song->Album = $this->getRoute()->getObject();
+  	$this->form = new mrSongForm($song);
+  }
+  
+	public function executeAddSongSubmit(sfWebRequest $request)
+  {
+  	$song = new mrSong();
+  	$song->Album = $this->getRoute()->getObject();
+  	$this->form = new mrSongForm($song);
+
+    $this->processSongForm($request, $this->form);
+
+    $this->setTemplate('edit');
+  }
+  
+	protected function processSongForm(sfWebRequest $request, sfForm $form)
+  {
+    $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+    if ($form->isValid())
+    {
+      $song = $form->save();
+
+      $this->redirect($this->generateUrl('music_show', $song->Album));
+    }
+  }
+  
   public function executeProcessiTunesXml(sfWebRequest $request)
   {
   	$user = Doctrine_Core::getTable('sfGuardUser')->findOneByUsername('admin');

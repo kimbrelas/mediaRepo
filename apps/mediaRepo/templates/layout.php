@@ -36,7 +36,7 @@
 							<a href="<?php echo url_for('register') ?>"><img src="/images/register-btn.png" alt="Register Now" /></a>
 						</div>
 					<?php endif; ?>
-					<h3>Media Repo
+					<h3>lib'dIt
 						<span>
 							<span> | </span>
 							<?php include_partial('global/breadcrumbs', array('module' => $sf_context->getModuleName())) ?>

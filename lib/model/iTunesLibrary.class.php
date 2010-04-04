@@ -75,33 +75,40 @@ class iTunesLibrary
 
   	foreach($this->songs as $song)
   	{
-  		$id = $song['Album'].$song['Artist'];
-  		
-  		if(!in_array($id, $processed) )
+  		// if the album exists already, don't add it
+  		$album = Doctrine_Query::create()
+  			->from('mrMusic')
+  			->where('name = ?', $song['Album'])
+  			->andWhere('artist = ?', $song['Artist'])
+  			->andWhere('user_id = ?', $this->user->id)
+  			->andWhere('medium = ?', 'Digital')
+  			->fetchOne();
+	  	
+  		if(!$album)
   		{
-	  		$processed[] = $id;
-	  		
-	  		// if the album exists already, don't add it
-	  		$album = Doctrine_Query::create()
-	  			->from('mrMusic')
-	  			->where('name = ?', $song['Album'])
-	  			->andWhere('artist = ?', $song['Artist'])
-	  			->andWhere('user_id = ?', $this->user->id)
-	  			->andWhere('year = ?', $song['Year'])
-	  			->andWhere('medium = ?', 'Digital')
-	  			->fetchOne();
-	  			
-	  		if(!$album)
-	  		{
-		  		// add the album to the database
-			  	$music = new mrMusic();
-			  	$music->name   = $song['Album'];
-			  	$music->medium = 'Digital';
-			  	$music->year   = $song['Year'];
-			  	$music->artist = $song['Artist'];
-			  	$music->User   = $this->user;
-			  	$music->save();
-	  		}
+	  		// add the album to the database
+		  	$album = new mrMusic();
+		  	$album->name   = $song['Album'];
+		  	$album->medium = 'Digital';
+		  	$album->year   = $song['Year'];
+		  	$album->artist = $song['Artist'];
+		  	$album->User   = $this->user;
+		  	$album->save();
+  		}
+  		
+  		// if the song exists already, don't add it
+  		$s = Doctrine_Query::create()
+  			->from('mrSong')
+  			->where('name = ?', $song['Name'])
+  			->andWhere('album_id = ?', $album->id)
+  			->fetchOne();
+  		
+  		if(!$s)
+  		{
+  			$s = new mrSong();
+  			$s->name = $song['Name'];
+  			$s->Album = $album;
+  			$s->save();
   		}
   	}
 	}
