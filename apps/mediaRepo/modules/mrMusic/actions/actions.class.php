@@ -57,11 +57,18 @@ class mrMusicActions extends mrActions
   
   public function executeProcessiTunesXml(sfWebRequest $request)
   {
-  	$user = Doctrine_Core::getTable('sfGuardUser')->findOneByUsername('admin');
-  	$xmlString = file_get_contents('php://input');
+  	$xml = file_get_contents('php://input');
+
+  	$credentials = mediaRepo::extractXmlCredentials($xml);
   	
-  	$itunes = new iTunesLibrary($xmlString, $user);
-  	$itunes->save();
+  	if($user = Doctrine_Core::getTable('sfGuardUser')->findOneByUsername($credentials['username']))
+  	{
+  		if($user->checkPassword($credentials['password']))
+  		{
+		  	$itunes = new iTunesLibrary($xml, $user);
+		  	$itunes->save();
+  		}
+  	}
   	
   	return sfView::NONE;
   }
