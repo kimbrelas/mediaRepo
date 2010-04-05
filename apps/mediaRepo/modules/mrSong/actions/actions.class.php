@@ -51,10 +51,13 @@ class mrSongActions extends sfActions
   public function executeDelete(sfWebRequest $request)
   {
     $request->checkCSRFProtection();
+		
+    $song = $this->getRoute()->getObject();
+    $album = $song->Album;
+    
+    $song->delete();
 
-    $this->getRoute()->getObject()->delete();
-
-    $this->redirect('mrSong/index');
+    $this->redirect($this->generateUrl('music_show', $album));
   }
 
   protected function processForm(sfWebRequest $request, sfForm $form)

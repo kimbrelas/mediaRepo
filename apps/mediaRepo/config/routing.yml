@@ -39,6 +39,14 @@ music:
     prefix_path: /music
     object_actions: { addSong: get, addSongSubmit: post, orderSongs: post }
 
+songs:
+  class: sfDoctrineRouteCollection
+  options:
+    model:       mrSong
+    module:      mrSong
+    prefix_path: /songs
+    actions:     { delete: delete }
+
 process_itunes_xml:
   url: /process-itunes-xml
   param: { module: mrMusic, action: processiTunesXml }
