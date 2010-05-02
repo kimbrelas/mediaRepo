@@ -1,3 +1,5 @@
+<?php slot('title') ?>Books <?php echo $status ?><?php end_slot(); ?>
+
 <table width="100%">
   <thead>
     <tr>
@@ -10,7 +12,7 @@
   <tbody>
     <?php foreach ($books as $book): ?>
     <tr>
-      <td><a href="<?php echo url_for('books_show', $book) ?>"><?php echo $book->name ?></a></td>
+      <td><a href="<?php echo url_for($base_route.'_show', $book) ?>"><?php echo $book->name ?></a></td>
       <td><?php echo $book->medium ?></td>
       <td><?php echo $book->year ?></td>
       <td><?php echo $book->author ?></td>
@@ -20,4 +22,4 @@
 </table>
 
 <br />
-<a href="<?php echo url_for('books_new') ?>">Add Book</a>
+<a href="<?php echo url_for($base_route.'_new') ?>">Add Book</a>

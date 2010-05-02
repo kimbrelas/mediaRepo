@@ -18,6 +18,6 @@
 
 <hr />
 
-<a href="<?php echo url_for('movies_edit', $movie) ?>">Edit</a>
+<a href="<?php echo url_for($base_route.'_edit', $movie) ?>">Edit</a>
 &nbsp;
-<a href="<?php echo url_for('movies') ?>">List</a>
+<a href="<?php echo url_for($base_route) ?>">List</a>

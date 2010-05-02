@@ -1,3 +1,5 @@
+<?php slot('title') ?>Movies <?php echo $status ?><?php end_slot(); ?>
+
 <table width="100%">
   <thead>
     <tr>
@@ -10,7 +12,7 @@
   <tbody>
     <?php foreach ($movies as $movie): ?>
     <tr>
-      <td><a href="<?php echo url_for('movies_show', $movie) ?>"><?php echo $movie->name ?></a></td>
+      <td><a href="<?php echo url_for($base_route.'_show', $movie) ?>"><?php echo $movie->name ?></a></td>
       <td><?php echo $movie->medium ?></td>
       <td><?php echo $movie->year ?></td>
       <td><?php echo $movie->format ?></td>
@@ -20,4 +22,4 @@
 </table>
 
 <br />
-<a href="<?php echo url_for('movies_new') ?>">Add Movie</a>
+<a href="<?php echo url_for($base_route.'_new') ?>">Add Movie</a>

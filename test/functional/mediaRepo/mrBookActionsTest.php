@@ -6,7 +6,7 @@ $browser = new mrTestFunctional(new sfBrowser());
 
 $browser->login()
 
-	->get('/books/owned')
+	->get('/books')
 
   ->with('request')->begin()
     ->isParameter('module', 'mrBook')
@@ -29,7 +29,7 @@ $browser->login()
   	->isStatusCode(200)
   ->end()
   
-  ->click('Save', array('mr_book' => array('name' => 'A Game of Thrones', 'medium' => 'Hardback', 'status' => 'owned', 'year' => '1997', 'author' => 'George R.R. Martin')))
+  ->click('Save', array('mr_book' => array('name' => 'A Game of Thrones', 'medium' => 'Hardback', 'year' => '1997', 'author' => 'George R.R. Martin')))
   
   ->with('form')->begin()
   	->hasErrors(0)
@@ -55,7 +55,7 @@ $browser->login()
     ->matches('/A Game of Thrones/')
   ->end()
   
-  ->get('/books/owned')
+  ->get('/books')
   
   ->with('request')->begin()
     ->isParameter('module', 'mrBook')

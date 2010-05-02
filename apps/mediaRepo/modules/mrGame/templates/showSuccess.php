@@ -18,6 +18,6 @@
 
 <hr />
 
-<a href="<?php echo url_for('games_edit', $game) ?>">Edit</a>
+<a href="<?php echo url_for($base_route.'_edit', $game) ?>">Edit</a>
 &nbsp;
-<a href="<?php echo url_for('games') ?>">List</a>
+<a href="<?php echo url_for($base_route) ?>">List</a>

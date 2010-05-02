@@ -15,7 +15,7 @@ class mrMediaForm extends BasemrMediaForm
     parent::setup();
     
     $this->setWidget('medium', new sfWidgetFormChoice(array('choices' => array_merge(array('' => 'Select one'), $this->getObject()->getTable()->getMediums()))));
-    $this->setWidget('status', new sfWidgetFormChoice(array('choices' => array('' => 'Select one', 'owned' => 'Owned', 'wishlist' => 'Wishlist'))));
+    $this->setWidget('status', new sfWidgetFormInputHidden());
     
     $this->validatorSchema['name']->setOption('required', true);
     $this->validatorSchema['medium']->setOption('required', true);

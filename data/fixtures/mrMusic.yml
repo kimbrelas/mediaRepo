@@ -2,6 +2,14 @@ mrMusic:
   mrMusic1:
     name:   Fixtures music
     medium: CD
+    status: owned
+    year:   1999
+    artist: Fixtures
+    User:   sfGuardUser1
+  mrMusic2:
+    name:   Fixtures wishlist music
+    medium: CD
+    status: wishlist
     year:   1999
     artist: Fixtures
     User:   sfGuardUser1

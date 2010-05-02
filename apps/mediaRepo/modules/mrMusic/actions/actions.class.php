@@ -12,7 +12,7 @@ class mrMusicActions extends mrActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->setupIndex($request, 'mrMusic', 'musics');
+    $this->setupIndex('mrMusic', 'musics');
   }
 	
 	public function executeOrderSongs(sfWebRequest $request)
@@ -80,6 +80,7 @@ class mrMusicActions extends mrActions
   public function executeNew(sfWebRequest $request)
   {
     $this->form = new mrMusicForm();
+    $this->form->setDefault('status', $this->status);
   }
 
   public function executeCreate(sfWebRequest $request)
@@ -113,7 +114,7 @@ class mrMusicActions extends mrActions
 
     $this->getRoute()->getObject()->delete();
 
-    $this->redirect('mrMusic/index');
+    $this->redirect($this->generateUrl($this->base_route));
   }
 
   protected function processForm(sfWebRequest $request, sfForm $form)
@@ -123,7 +124,7 @@ class mrMusicActions extends mrActions
     {
       $music = $form->save();
 
-      $this->redirect('mrMusic/edit?id='.$music->getId());
+      $this->redirect($this->generateUrl($this->base_route.'_edit', $music));
     }
   }
 }

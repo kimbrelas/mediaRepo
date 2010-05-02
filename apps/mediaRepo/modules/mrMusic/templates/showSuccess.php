@@ -21,23 +21,23 @@
 	    			<li id="<?php echo $song->id; ?>"><?php echo link_to('X', 'mrSong/delete?id='.$song->id, array('method' => 'delete', 'confirm' => 'Are you sure?')) ?> <?php echo $song->name; ?></li>
 	    		<?php endforeach; ?>
 	    	</ul>
-    		<a href="<?php echo url_for('music_addSong', $music) ?>">Add Song</a>
+    		<a href="<?php echo url_for($base_route.'_addSong', $music) ?>">Add Song</a>
     	</td>
     </tr>
 </table>
 
 <hr />
 
-<a href="<?php echo url_for('music_edit', $music) ?>">Edit</a>
+<a href="<?php echo url_for($base_route.'_edit', $music) ?>">Edit</a>
 &nbsp;
-<a href="<?php echo url_for('music') ?>">List</a>
+<a href="<?php echo url_for($base_route) ?>">List</a>
 
 <script type="text/javascript">
 	$(function() {
 		$("#sortable").sortable({
 			update: function(event, ui) {
 				$.post(
-					"<?php echo url_for('music_orderSongs', $music) ?>",
+					"<?php echo url_for($base_route.'_orderSongs', $music) ?>",
 					{ songs: $('#sortable').sortable('toArray') }
 				);	
 			}

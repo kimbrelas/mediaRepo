@@ -1,3 +1,5 @@
+<?php slot('title') ?>Games <?php echo $status ?><?php end_slot(); ?>
+
 <table width="100%">
   <thead>
     <tr>
@@ -10,7 +12,7 @@
   <tbody>
     <?php foreach ($games as $game): ?>
     <tr>
-      <td><a href="<?php echo url_for('games_show', $game) ?>"><?php echo $game->name ?></a></td>
+      <td><a href="<?php echo url_for($base_route.'_show', $game) ?>"><?php echo $game->name ?></a></td>
       <td><?php echo $game->medium ?></td>
       <td><?php echo $game->year ?></td>
       <td><?php echo $game->platform ?></td>
@@ -20,4 +22,4 @@
 </table>
 
 <br />
-<a href="<?php echo url_for('games_new') ?>">Add Game</a>
+<a href="<?php echo url_for($base_route.'_new') ?>">Add Game</a>

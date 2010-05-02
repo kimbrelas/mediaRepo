@@ -12,7 +12,7 @@ class mrMovieActions extends mrActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->setupIndex($request, 'mrMovie', 'movies');
+    $this->setupIndex('mrMovie', 'movies');
   }
 
   public function executeShow(sfWebRequest $request)
@@ -25,6 +25,7 @@ class mrMovieActions extends mrActions
   public function executeNew(sfWebRequest $request)
   {
     $this->form = new mrMovieForm();
+    $this->form->setDefault('status', $this->status);
   }
 
   public function executeCreate(sfWebRequest $request)
@@ -58,7 +59,7 @@ class mrMovieActions extends mrActions
 
     $this->getRoute()->getObject()->delete();
 
-    $this->redirect('mrMovie/index');
+    $this->redirect($this->generateUrl($this->base_route));
   }
 
   protected function processForm(sfWebRequest $request, sfForm $form)
@@ -68,7 +69,7 @@ class mrMovieActions extends mrActions
     {
       $movie = $form->save();
 
-      $this->redirect('mrMovie/edit?id='.$movie->getId());
+      $this->redirect($this->generateUrl($this->base_route.'_edit', $movie));
     }
   }
 }

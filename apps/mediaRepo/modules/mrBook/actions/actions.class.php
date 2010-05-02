@@ -12,7 +12,7 @@ class mrBookActions extends mrActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->setupIndex($request, 'mrBook', 'books');
+    $this->setupIndex('mrBook', 'books');
   }
 
   public function executeShow(sfWebRequest $request)
@@ -25,6 +25,7 @@ class mrBookActions extends mrActions
   public function executeNew(sfWebRequest $request)
   {
     $this->form = new mrBookForm();
+    $this->form->setDefault('status', $this->status);
   }
 
   public function executeCreate(sfWebRequest $request)
@@ -58,7 +59,7 @@ class mrBookActions extends mrActions
 
     $this->getRoute()->getObject()->delete();
 
-    $this->redirect('mrBook/index');
+    $this->redirect($this->generateUrl($this->base_route));
   }
 
   protected function processForm(sfWebRequest $request, sfForm $form)
@@ -67,8 +68,8 @@ class mrBookActions extends mrActions
     if ($form->isValid())
     {
       $book = $form->save();
-
-      $this->redirect('mrBook/edit?id='.$book->getId());
+      
+      $this->redirect($this->generateUrl($this->base_route.'_edit', $book));
     }
   }
 }

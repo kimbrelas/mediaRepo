@@ -19,10 +19,11 @@
 			    <a href="<?php echo url_for('sf_guard_signin') ?>"></a>
 			  </div>
 	    <?php endif; ?>
+      <?php /*
 	    <div class="social-icons">
 	    	<a href="#"><img src="/images/facebook.png" alt="Facebook" /></a>
 	      <a href="#"><img src="/images/twitter.png" alt="Twitter" /></a>
-	    </div>
+	    </div> */ ?>
 		</div>
 		<div id="container">
 			<div id="header"></div>
@@ -39,7 +40,7 @@
 					<h3>lib'dIt
 						<span>
 							<span> | </span>
-							<?php include_partial('global/breadcrumbs', array('module' => $sf_context->getModuleName())) ?>
+							<?php include_slot('title'); ?>
 						</span>
 					</h3>
 					<div class="border-shadow"></div>

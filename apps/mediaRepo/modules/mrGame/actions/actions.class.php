@@ -12,7 +12,7 @@ class mrGameActions extends mrActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->setupIndex($request, 'mrGame', 'games');
+    $this->setupIndex('mrGame', 'games');
   }
 
   public function executeShow(sfWebRequest $request)
@@ -25,6 +25,7 @@ class mrGameActions extends mrActions
   public function executeNew(sfWebRequest $request)
   {
     $this->form = new mrGameForm();
+    $this->form->setDefault('status', $this->status);
   }
 
   public function executeCreate(sfWebRequest $request)
@@ -58,7 +59,7 @@ class mrGameActions extends mrActions
 
     $this->getRoute()->getObject()->delete();
 
-    $this->redirect('mrGame/index');
+    $this->redirect($this->generateUrl($this->base_route));
   }
 
   protected function processForm(sfWebRequest $request, sfForm $form)
@@ -68,7 +69,7 @@ class mrGameActions extends mrActions
     {
       $game = $form->save();
 
-      $this->redirect('mrGame/edit?id='.$game->getId());
+      $this->redirect($this->generateUrl($this->base_route.'_edit', $game));
     }
   }
 }

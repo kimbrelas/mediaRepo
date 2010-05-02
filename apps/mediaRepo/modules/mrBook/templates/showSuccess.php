@@ -19,6 +19,6 @@
 
 <hr />
 
-<a href="<?php echo url_for('books_edit', $book) ?>">Edit</a>
+<a href="<?php echo url_for($base_route.'_edit', $book) ?>">Edit</a>
 &nbsp;
-<a href="<?php echo url_for('books') ?>">List</a>
+<a href="<?php echo url_for($base_route) ?>">List</a>
