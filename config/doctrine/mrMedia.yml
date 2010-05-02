@@ -1,0 +1,7 @@
+mrMedia:
+  columns:
+    name:     string(255)
+    medium:   string(255)
+    year:     integer(4)
+    user_id:  integer(4)
+    status:   string(255)

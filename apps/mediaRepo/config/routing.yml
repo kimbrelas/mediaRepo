@@ -17,6 +17,10 @@ books:
     module:      mrBook
     prefix_path: /books
 
+books_index:
+  url:   /books/:status
+  param: { module: mrBook, action: index, status: owned }
+
 games:
   class: sfDoctrineRouteCollection
   options:
@@ -24,13 +28,21 @@ games:
     module:      mrGame
     prefix_path: /games
 
+games_index:
+  url:   /games/:status
+  param: { module: mrGame, action: index, status: owned }
+
 movies:
   class: sfDoctrineRouteCollection
   options:
     model:       mrMovie
     module:      mrMovie
     prefix_path: /movies
-    
+
+movies_index:
+  url:   /movies/:status
+  param: { module: mrMovie, action: index, status: owned }
+
 music:
   class: sfDoctrineRouteCollection
   options:
@@ -38,6 +50,10 @@ music:
     module:      mrMusic
     prefix_path: /music
     object_actions: { addSong: get, addSongSubmit: post, orderSongs: post }
+
+music_index:
+  url:   /music/:status
+  param: { module: mrMusic, action: index, status: owned }
 
 songs:
   class: sfDoctrineRouteCollection
@@ -60,7 +76,6 @@ register_submit:
   param: { module: account, action: registerSubmit }
   requirements:
     sf_method: [post]
-
 
 sf_guard_signin:
   url:   /login

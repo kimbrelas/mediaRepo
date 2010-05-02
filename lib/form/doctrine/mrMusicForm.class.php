@@ -10,32 +10,18 @@
  */
 class mrMusicForm extends BasemrMusicForm
 {
-	public function setup()
+  public function setup()
   {
-  	parent::setup();
-  	
-  	$this->useFields(array(
-  		'name',
-  		'medium',
-  		'year',
-  		'artist'
-  	));
-  	
-  	$this->setWidget('medium', new sfWidgetFormChoice(array('choices' => array_merge(array('' => 'Select one'), $this->getObject()->getTable()->getMediums()))));
-  	
-  	$this->validatorSchema['name']->setOption('required', true);
-  	$this->validatorSchema['medium']->setOption('required', true);
-  	$this->validatorSchema['year']->setOption('required', true);
-  	$this->validatorSchema['artist']->setOption('required', true);
-  }
-  
-	public function doSave($con = null)
-  {
-  	if($this->getObject()->isNew())
-  	{
-  		$this->getObject()->user_id = sfContext::getInstance()->getUser()->getGuardUser()->id;
-  	}
-  	
-  	parent::doSave($con);
+    parent::setup();
+    
+    $this->useFields(array(
+      'name',
+      'medium',
+      'year',
+      'status',
+      'artist',
+    ));
+    
+    $this->validatorSchema['artist']->setOption('required', true);
   }
 }

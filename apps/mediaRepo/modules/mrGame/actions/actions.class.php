@@ -12,10 +12,7 @@ class mrGameActions extends mrActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->games = Doctrine_Query::create()
-    	->from('mrGame g')
-    	->where('g.user_id = ?', $this->getUser()->getGuardUser()->id)
-    	->execute();
+    $this->setupIndex($request, 'mrGame', 'games');
   }
 
   public function executeShow(sfWebRequest $request)

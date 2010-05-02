@@ -1,7 +1,8 @@
-CREATE TABLE mr_book (id BIGINT AUTO_INCREMENT, name VARCHAR(255), medium VARCHAR(255), year INT, author VARCHAR(255), user_id INT, INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
-CREATE TABLE mr_game (id BIGINT AUTO_INCREMENT, name VARCHAR(255), medium VARCHAR(255), year INT, platform VARCHAR(255), user_id INT, INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
-CREATE TABLE mr_movie (id BIGINT AUTO_INCREMENT, name VARCHAR(255), medium VARCHAR(255), year INT, format VARCHAR(255), user_id INT, INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
-CREATE TABLE mr_music (id BIGINT AUTO_INCREMENT, name VARCHAR(255), medium VARCHAR(255), year INT, artist VARCHAR(255), user_id INT, INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE mr_book (id BIGINT AUTO_INCREMENT, name VARCHAR(255), medium VARCHAR(255), year INT, user_id INT, status VARCHAR(255), author VARCHAR(255), INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE mr_game (id BIGINT AUTO_INCREMENT, name VARCHAR(255), medium VARCHAR(255), year INT, user_id INT, status VARCHAR(255), platform VARCHAR(255), INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE mr_media (id BIGINT AUTO_INCREMENT, name VARCHAR(255), medium VARCHAR(255), year INT, user_id INT, status VARCHAR(255), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE mr_movie (id BIGINT AUTO_INCREMENT, name VARCHAR(255), medium VARCHAR(255), year INT, user_id INT, status VARCHAR(255), format VARCHAR(255), INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE mr_music (id BIGINT AUTO_INCREMENT, name VARCHAR(255), medium VARCHAR(255), year INT, user_id INT, status VARCHAR(255), artist VARCHAR(255), INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE mr_song (id BIGINT AUTO_INCREMENT, name VARCHAR(255), album_id BIGINT, position INT, INDEX album_id_idx (album_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE sf_guard_group (id INT AUTO_INCREMENT, name VARCHAR(255) UNIQUE, description TEXT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE sf_guard_group_permission (group_id INT, permission_id INT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(group_id, permission_id)) ENGINE = INNODB;

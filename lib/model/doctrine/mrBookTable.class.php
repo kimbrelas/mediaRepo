@@ -1,6 +1,5 @@
 <?php
 
-
 class mrBookTable extends Doctrine_Table
 {
   public static function getInstance()
@@ -8,14 +7,14 @@ class mrBookTable extends Doctrine_Table
     return Doctrine_Core::getTable('mrBook');
   }
   
-	public function getMediums()
+  public function getMediums()
   {
-  	$mediums = array(
-  		'Paperback',
-  		'Hardback',
-  		'Digital'
-  	);
-  	
-  	return array_combine($mediums, $mediums);
+    $mediums = array(
+      'Paperback',
+      'Hardback',
+      'Digital'
+    );
+    
+    return array_combine($mediums, $mediums);
   }
 }

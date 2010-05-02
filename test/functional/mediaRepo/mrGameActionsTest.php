@@ -6,7 +6,7 @@ $browser = new mrTestFunctional(new sfBrowser());
 
 $browser->login()
 
-	->get('/games')
+	->get('/games/owned')
 
   ->with('request')->begin()
     ->isParameter('module', 'mrGame')
@@ -29,7 +29,7 @@ $browser->login()
   	->isStatusCode(200)
   ->end()
   
-  ->click('Save', array('mr_game' => array('name' => 'Gears of War', 'medium' => 'Disc', 'year' => '2006', 'platform' => 'Xbox 360')))
+  ->click('Save', array('mr_game' => array('name' => 'Gears of War', 'medium' => 'Disc', 'status' => 'owned', 'year' => '2006', 'platform' => 'Xbox 360')))
   
   ->with('form')->begin()
   	->hasErrors(0)
@@ -55,7 +55,7 @@ $browser->login()
     ->matches('/Gears of War/')
   ->end()
   
-  ->get('/games')
+  ->get('/games/owned')
   
   ->with('request')->begin()
     ->isParameter('module', 'mrGame')

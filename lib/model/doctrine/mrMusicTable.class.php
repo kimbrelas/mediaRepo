@@ -10,12 +10,12 @@ class mrMusicTable extends Doctrine_Table
   
 	public function getMediums()
   {
-  	$mediums = array(
-  		'CD',
-  		'Cassette',
-  		'Digital'
-  	);
-  	
-  	return array_combine($mediums, $mediums);
+    $mediums = array(
+      'CD',
+      'Cassette',
+      'Digital'
+    );
+    
+    return array_combine($mediums, $mediums);
   }
 }

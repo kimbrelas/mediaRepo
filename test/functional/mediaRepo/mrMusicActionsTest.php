@@ -6,7 +6,7 @@ $browser = new mrTestFunctional(new sfBrowser());
 
 $browser->login()
 
-	->get('/music')
+	->get('/music/owned')
 
   ->with('request')->begin()
     ->isParameter('module', 'mrMusic')
@@ -29,7 +29,7 @@ $browser->login()
   	->isStatusCode(200)
   ->end()
   
-  ->click('Save', array('mr_music' => array('name' => 'In the Aeroplane Over the Sea', 'medium' => 'CD', 'year' => '1998', 'artist' => 'Neutral Milk Hotel')))
+  ->click('Save', array('mr_music' => array('name' => 'In the Aeroplane Over the Sea', 'medium' => 'CD', 'status' => 'owned', 'year' => '1998', 'artist' => 'Neutral Milk Hotel')))
   
   ->with('form')->begin()
   	->hasErrors(0)
@@ -55,7 +55,7 @@ $browser->login()
     ->matches('/In the Aeroplane Over the Sea/')
   ->end()
   
-  ->get('/music')
+  ->get('/music/owned')
   
   ->with('request')->begin()
     ->isParameter('module', 'mrMusic')

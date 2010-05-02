@@ -6,7 +6,7 @@ $browser = new mrTestFunctional(new sfBrowser());
 
 $browser->login()
 
-	->get('/movies')
+	->get('/movies/owned')
 
   ->with('request')->begin()
     ->isParameter('module', 'mrMovie')
@@ -29,7 +29,7 @@ $browser->login()
   	->isStatusCode(200)
   ->end()
   
-  ->click('Save', array('mr_movie' => array('name' => 'Pretty Woman', 'medium' => 'DVD', 'year' => '1990', 'format' => '16:9')))
+  ->click('Save', array('mr_movie' => array('name' => 'Pretty Woman', 'medium' => 'DVD', 'status' => 'owned', 'year' => '1990', 'format' => '16:9')))
   
   ->with('form')->begin()
   	->hasErrors(0)
@@ -55,7 +55,7 @@ $browser->login()
     ->matches('/Pretty Woman/')
   ->end()
   
-  ->get('/movies')
+  ->get('/movies/owned')
   
   ->with('request')->begin()
     ->isParameter('module', 'mrMovie')

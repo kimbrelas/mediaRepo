@@ -12,10 +12,7 @@ class mrBookActions extends mrActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->books = Doctrine_Query::create()
-    	->from('mrBook b')
-    	->where('b.user_id = ?', $this->getUser()->getGuardUser()->id)
-    	->execute();
+    $this->setupIndex($request, 'mrBook', 'books');
   }
 
   public function executeShow(sfWebRequest $request)

@@ -12,10 +12,7 @@ class mrMovieActions extends mrActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->movies = Doctrine_Query::create()
-    	->from('mrMovie m')
-    	->where('m.user_id = ?', $this->getUser()->getGuardUser()->id)
-    	->execute();
+    $this->setupIndex($request, 'mrMovie', 'movies');
   }
 
   public function executeShow(sfWebRequest $request)

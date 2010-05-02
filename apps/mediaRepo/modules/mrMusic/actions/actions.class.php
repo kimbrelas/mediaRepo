@@ -12,10 +12,7 @@ class mrMusicActions extends mrActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->musics = Doctrine_Query::create()
-    	->from('mrMusic m')
-    	->where('m.user_id = ?', $this->getUser()->getGuardUser()->id)
-    	->execute();
+    $this->setupIndex($request, 'mrMusic', 'musics');
   }
 	
 	public function executeOrderSongs(sfWebRequest $request)
