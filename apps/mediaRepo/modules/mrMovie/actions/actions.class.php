@@ -17,7 +17,7 @@ class mrMovieActions extends mrActions
 
   public function executeShow(sfWebRequest $request)
   {
-  	$this->verifyOwner();
+  	$this->verifyObject();
   	
     $this->movie = $this->getRoute()->getObject();
   }
@@ -39,7 +39,7 @@ class mrMovieActions extends mrActions
 
   public function executeEdit(sfWebRequest $request)
   {
-  	$this->verifyOwner();
+  	$this->verifyObject();
   	
     $this->form = new mrMovieForm($this->getRoute()->getObject());
   }

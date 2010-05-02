@@ -72,7 +72,7 @@ class mrMusicActions extends mrActions
   
   public function executeShow(sfWebRequest $request)
   {
-  	$this->verifyOwner();
+  	$this->verifyObject();
   	
     $this->music = $this->getRoute()->getObject();
   }
@@ -94,7 +94,7 @@ class mrMusicActions extends mrActions
 
   public function executeEdit(sfWebRequest $request)
   {
-  	$this->verifyOwner();
+  	$this->verifyObject();
   	
     $this->form = new mrMusicForm($this->getRoute()->getObject());
   }

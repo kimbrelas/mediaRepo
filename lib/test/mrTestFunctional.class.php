@@ -2,6 +2,13 @@
 
 class mrTestFunctional extends sfTestFunctional
 {
+  public function __construct(sfBrowserBase $browser, lime_test $lime = null, $testers = array())
+  {
+    parent::__construct($browser, $lime, $testers);
+    
+    $this->setTester('doctrine', 'sfTesterDoctrine');
+  }
+  
 	public function login($user = 'admin', $password = 'admin')
 	{
 		$this->info('Logging in as '.$user)

@@ -17,7 +17,7 @@ class mrGameActions extends mrActions
 
   public function executeShow(sfWebRequest $request)
   {
-  	$this->verifyOwner();
+  	$this->verifyObject();
   	
     $this->game = $this->getRoute()->getObject();
   }
@@ -39,7 +39,7 @@ class mrGameActions extends mrActions
 
   public function executeEdit(sfWebRequest $request)
   {
-  	$this->verifyOwner();
+  	$this->verifyObject();
   	
     $this->form = new mrGameForm($this->getRoute()->getObject());
   }

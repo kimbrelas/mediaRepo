@@ -14,21 +14,33 @@ class mrActions extends sfActions
     'wishlist'
   );
   
-	public function verifyOwner()
-	{
-		$this->forward404Unless($this->getUser()->getGuardUser()->id == $this->getRoute()->getObject()->user_id);
-	}
-  
-  public function verifyStatus()
+  public function verifyObject()
   {
-    $opt = $this->getRoute()->getOptions();
+    $obj = $this->getRoute()->getObject();
     
-    if($opt['type'] == 'object')
-    {
-      $this->forward404Unless($this->status == $this->getRoute()->getObject()->status);
-    }
+    $this->verifyStatus($obj);
+  	$this->verifyOwner($obj);
   }
   
+  /**
+   * verify that the current user if the owner of the object queried for
+   */
+	public function verifyOwner($obj)
+	{
+		$this->forward404Unless($this->getUser()->getGuardUser()->id == $obj->user_id);
+	}
+  
+  /**
+   * make sure the object status matches the route status
+   */
+  public function verifyStatus($obj)
+  {
+    $this->forward404Unless(($this->status == $obj->status));
+  }
+  
+  /**
+   * setup all the vars for the index action
+   */
   public function setupIndex($class, $var)
   {
     $q = Doctrine_Query::create()
@@ -38,6 +50,9 @@ class mrActions extends sfActions
     $this->$var = $q->execute();
   }
   
+  /**
+   * handle setting of status and base_route as well as verifying the object
+   */
   public function preExecute()
   {
     $route  = explode('/', substr($this->getRequest()->getPathInfo(), 1));
@@ -47,11 +62,12 @@ class mrActions extends sfActions
     {
       $this->status = $this->getStatus($route);
       $this->base_route = ($this->status == 'owned') ? $base : $base.'_'.$this->status;
-      
-      $this->verifyStatus();
     }
   }
   
+  /**
+   * get the status based on the current route
+   */
   public function getStatus($route)
   {
     if(isset($route[1]))
