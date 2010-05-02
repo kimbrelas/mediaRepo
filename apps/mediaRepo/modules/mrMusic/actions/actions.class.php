@@ -48,7 +48,7 @@ class mrMusicActions extends mrActions
     {
     	$song = $form->save();
 			
-      $this->redirect($this->generateUrl('music_show', $song->Album));
+      $this->redirect($this->generateUrl($this->base_route.'_show', $song->Album));
     }
   }
   

@@ -18,7 +18,7 @@
     	<td>
     		<ul id="sortable">
 	    		<?php foreach($music->Songs as $song): ?>
-	    			<li id="<?php echo $song->id; ?>"><?php echo link_to('X', 'mrSong/delete?id='.$song->id, array('method' => 'delete', 'confirm' => 'Are you sure?')) ?> <?php echo $song->name; ?></li>
+	    			<li id="<?php echo $song->id; ?>"><?php echo link_to('X', url_for('songs_'.$status.'_delete', $song), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?> <?php echo $song->name; ?></li>
 	    		<?php endforeach; ?>
 	    	</ul>
     		<a href="<?php echo url_for($base_route.'_addSong', $music) ?>">Add Song</a>
