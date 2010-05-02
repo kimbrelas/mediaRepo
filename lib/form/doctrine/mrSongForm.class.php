@@ -15,10 +15,6 @@ class mrSongForm extends BasemrSongForm
     parent::setup();
     
     $this->useFields(array(
-      'name',
-      'medium',
-      'year',
-      'status',
       'name'
     ));
   }
