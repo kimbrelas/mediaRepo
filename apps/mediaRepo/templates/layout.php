@@ -37,10 +37,10 @@
 							<a href="<?php echo url_for('register') ?>"><img src="/images/register-btn.png" alt="Register Now" /></a>
 						</div>
 					<?php endif; ?>
-					<h3>lib'dIt
+					<h3>libdit
 						<span>
 							<span> | </span>
-							<?php include_slot('title'); ?>
+							<?php include_slot('subnav'); ?>
 						</span>
 					</h3>
 					<div class="border-shadow"></div>

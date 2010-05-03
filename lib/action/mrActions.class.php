@@ -9,11 +9,6 @@ class mrActions extends sfActions
     'musics'
   );
   
-  protected $_statusArr = array(
-    'owned',
-    'wishlist'
-  );
-  
   public function verifyObject()
   {
     $obj = $this->getRoute()->getObject();
@@ -60,8 +55,12 @@ class mrActions extends sfActions
     
     if(in_array($base, $this->_media));
     {
+      $this->media = $base;
+      $this->statuses = sfConfig::get('app_media_statuses');
       $this->status = $this->getStatus($route);
       $this->base_route = ($this->status == 'owned') ? $base : $base.'_'.$this->status;
+      
+      $this->renderPartial('global/subnav');
     }
   }
   
@@ -74,7 +73,7 @@ class mrActions extends sfActions
     {
       $status = $route[1];
       
-      if(in_array($status, $this->_statusArr))
+      if(in_array($status, array_keys($this->statuses)))
       {
         return $status;
       }
