@@ -1,5 +1,3 @@
-<?php slot('title') ?>Games <?php echo $status ?><?php end_slot(); ?>
-
 <table width="100%">
   <thead>
     <tr>
