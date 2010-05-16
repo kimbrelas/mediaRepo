@@ -76,14 +76,6 @@ songs:
     prefix_path: /songs
     actions:     { delete: delete }
 
-songs_wishlist:
-  class: sfDoctrineRouteCollection
-  options:
-    model:       mrSong
-    module:      mrSong
-    prefix_path: /songs/wishlist
-    actions:     { delete: delete }
-
 process_itunes_xml:
   url: /process-itunes-xml
   param: { module: mrMusic, action: processiTunesXml }
