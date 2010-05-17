@@ -1,3 +1,4 @@
+#!/bin/bash
 function remove_tabs {
   for file in $1; do
     if [ -f $file ]; then
