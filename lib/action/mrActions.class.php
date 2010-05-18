@@ -14,16 +14,16 @@ class mrActions extends sfActions
     $obj = $this->getRoute()->getObject();
     
     $this->verifyStatus($obj);
-  	$this->verifyOwner($obj);
+    $this->verifyOwner($obj);
   }
   
   /**
    * verify that the current user if the owner of the object queried for
    */
-	public function verifyOwner($obj)
-	{
-		$this->forward404Unless($this->getUser()->getGuardUser()->id == $obj->user_id);
-	}
+  public function verifyOwner($obj)
+  {
+    $this->forward404Unless($this->getUser()->getGuardUser()->id == $obj->user_id);
+  }
   
   /**
    * make sure the object status matches the route status

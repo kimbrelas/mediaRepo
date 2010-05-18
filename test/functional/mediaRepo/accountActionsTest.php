@@ -76,17 +76,17 @@ $browser->get('/account')
   ->click('Submit', array('sf_guard_user' => array('username' => 'functional', 'password' => 'functional', 'password_again' => 'functional')))
   
   ->with('form')->begin()
-  	->hasErrors(0)
+    ->hasErrors(0)
   ->end()
   
   ->with('response')->begin()
-  	->isStatusCode(302)
-  	->isRedirected()->followRedirect()
+    ->isStatusCode(302)
+    ->isRedirected()->followRedirect()
   ->end()
   
   ->with('request')->begin()
-  	->isParameter('module', 'sfGuardAuth')
-  	->isParameter('action', 'signin')
+    ->isParameter('module', 'sfGuardAuth')
+    ->isParameter('action', 'signin')
   ->end()
   
   ->login('functional', 'functional')
@@ -157,12 +157,12 @@ $browser->get('/account')
   ->end()
   
   ->with('request')->begin()
-  	->isParameter('module', 'account')
+    ->isParameter('module', 'account')
     ->isParameter('action', 'index')
   ->end()
   
   ->with('response')->begin()
-  	->isStatusCode(200)
-  	->matches('/functional/')
+    ->isStatusCode(200)
+    ->matches('/functional/')
   ->end()
 ;

@@ -14,66 +14,66 @@ class mrMusicActions extends mrActions
   {
     $this->setupIndex('mrMusic', 'musics');
   }
-	
-	public function executeOrderSongs(sfWebRequest $request)
+  
+  public function executeOrderSongs(sfWebRequest $request)
   {
-  	$album = $this->getRoute()->getObject();
-  	$album->orderSongs($request->getParameter('songs'));
-  	
-  	return sfView::NONE;
+    $album = $this->getRoute()->getObject();
+    $album->orderSongs($request->getParameter('songs'));
+    
+    return sfView::NONE;
   }
   
   public function executeAddSong(sfWebRequest $request)
   {
-  	$song = new mrSong();
-  	$song->Album = $this->getRoute()->getObject();
-  	$this->form = new mrSongForm($song);
+    $song = new mrSong();
+    $song->Album = $this->getRoute()->getObject();
+    $this->form = new mrSongForm($song);
   }
   
-	public function executeAddSongSubmit(sfWebRequest $request)
+  public function executeAddSongSubmit(sfWebRequest $request)
   {
-  	$song = new mrSong();
-  	$song->Album = $this->getRoute()->getObject();
-  	$this->form = new mrSongForm($song);
+    $song = new mrSong();
+    $song->Album = $this->getRoute()->getObject();
+    $this->form = new mrSongForm($song);
 
     $this->processSongForm($request, $this->form);
 
     $this->setTemplate('edit');
   }
   
-	protected function processSongForm(sfWebRequest $request, sfForm $form)
+  protected function processSongForm(sfWebRequest $request, sfForm $form)
   {
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
-    	$song = $form->save();
-			
+      $song = $form->save();
+      
       $this->redirect($this->generateUrl($this->base_route.'_show', $song->Album));
     }
   }
   
   public function executeProcessiTunesXml(sfWebRequest $request)
   {
-  	$xml = file_get_contents('php://input');
+    $xml = file_get_contents('php://input');
 
-  	$credentials = mediaRepo::extractXmlCredentials($xml);
-  	
-  	if($user = Doctrine_Core::getTable('sfGuardUser')->findOneByUsername($credentials['username']))
-  	{
-  		if($user->checkPassword($credentials['password']))
-  		{
-		  	$itunes = new iTunesLibrary($xml, $user);
-		  	$itunes->save();
-  		}
-  	}
-  	
-  	return sfView::NONE;
+    $credentials = mediaRepo::extractXmlCredentials($xml);
+    
+    if($user = Doctrine_Core::getTable('sfGuardUser')->findOneByUsername($credentials['username']))
+    {
+      if($user->checkPassword($credentials['password']))
+      {
+        $itunes = new iTunesLibrary($xml, $user);
+        $itunes->save();
+      }
+    }
+    
+    return sfView::NONE;
   }
   
   public function executeShow(sfWebRequest $request)
   {
-  	$this->verifyObject();
-  	
+    $this->verifyObject();
+    
     $this->music = $this->getRoute()->getObject();
   }
 
@@ -94,8 +94,8 @@ class mrMusicActions extends mrActions
 
   public function executeEdit(sfWebRequest $request)
   {
-  	$this->verifyObject();
-  	
+    $this->verifyObject();
+    
     $this->form = new mrMusicForm($this->getRoute()->getObject());
   }
 

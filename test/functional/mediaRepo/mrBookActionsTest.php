@@ -6,7 +6,7 @@ $browser = new mrTestFunctional(new sfBrowser());
 
 $browser->login()
 
-	->get('/books')
+  ->get('/books')
 
   ->with('request')->begin()
     ->isParameter('module', 'mrBook')
@@ -26,23 +26,23 @@ $browser->login()
   ->end()
   
   ->with('response')->begin()
-  	->isStatusCode(200)
+    ->isStatusCode(200)
   ->end()
   
   ->click('Save', array('mr_book' => array('name' => 'A Game of Thrones', 'medium' => 'Hardback', 'year' => '1997', 'author' => 'George R.R. Martin')))
   
   ->with('form')->begin()
-  	->hasErrors(0)
+    ->hasErrors(0)
   ->end()
-	
+  
   ->with('request')->begin()
     ->isParameter('module', 'mrBook')
     ->isParameter('action', 'create')
   ->end()
   
   ->with('response')->begin()
-  	->isStatusCode(302)
-  	->isRedirected()->followRedirect()
+    ->isStatusCode(302)
+    ->isRedirected()->followRedirect()
   ->end()
   
   ->with('request')->begin()
@@ -92,23 +92,23 @@ $browser->login()
   ->end()
   
   ->with('response')->begin()
-  	->isStatusCode(200)
+    ->isStatusCode(200)
   ->end()
   
   ->click('Save', array('mr_book' => array('name' => 'A Storm of Swords', 'medium' => 'Hardback', 'year' => '2003', 'author' => 'George R.R. Martin')))
   
   ->with('form')->begin()
-  	->hasErrors(0)
+    ->hasErrors(0)
   ->end()
-	
+  
   ->with('request')->begin()
     ->isParameter('module', 'mrBook')
     ->isParameter('action', 'create')
   ->end()
   
   ->with('response')->begin()
-  	->isStatusCode(302)
-  	->isRedirected()->followRedirect()
+    ->isStatusCode(302)
+    ->isRedirected()->followRedirect()
   ->end()
   
   ->with('request')->begin()

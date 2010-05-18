@@ -12,11 +12,11 @@
  */
 class mrSong extends BasemrSong
 {
-	public function preSave($event)
-	{
-		if(!$this->position)
-		{
-			$this->position = $this->Album->getNewSongPosition();
-		}
-	}
+  public function preSave($event)
+  {
+    if(!$this->position)
+    {
+      $this->position = $this->Album->getNewSongPosition();
+    }
+  }
 }
