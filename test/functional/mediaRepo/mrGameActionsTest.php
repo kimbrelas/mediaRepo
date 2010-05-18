@@ -6,7 +6,7 @@ $browser = new mrTestFunctional(new sfBrowser());
 
 $browser->login()
 
-	->get('/games')
+  ->get('/games')
 
   ->with('request')->begin()
     ->isParameter('module', 'mrGame')
@@ -26,23 +26,23 @@ $browser->login()
   ->end()
   
   ->with('response')->begin()
-  	->isStatusCode(200)
+    ->isStatusCode(200)
   ->end()
   
   ->click('Save', array('mr_game' => array('name' => 'Gears of War', 'medium' => 'Disc', 'year' => '2006', 'platform' => 'Xbox 360')))
   
   ->with('form')->begin()
-  	->hasErrors(0)
+    ->hasErrors(0)
   ->end()
-	
+  
   ->with('request')->begin()
     ->isParameter('module', 'mrGame')
     ->isParameter('action', 'create')
   ->end()
   
   ->with('response')->begin()
-  	->isStatusCode(302)
-  	->isRedirected()->followRedirect()
+    ->isStatusCode(302)
+    ->isRedirected()->followRedirect()
   ->end()
   
   ->with('request')->begin()
@@ -92,23 +92,23 @@ $browser->login()
   ->end()
   
   ->with('response')->begin()
-  	->isStatusCode(200)
+    ->isStatusCode(200)
   ->end()
   
   ->click('Save', array('mr_game' => array('name' => 'Halo 3', 'medium' => 'Disc', 'year' => '2007', 'platform' => 'Xbox 360')))
   
   ->with('form')->begin()
-  	->hasErrors(0)
+    ->hasErrors(0)
   ->end()
-	
+  
   ->with('request')->begin()
     ->isParameter('module', 'mrGame')
     ->isParameter('action', 'create')
   ->end()
   
   ->with('response')->begin()
-  	->isStatusCode(302)
-  	->isRedirected()->followRedirect()
+    ->isStatusCode(302)
+    ->isRedirected()->followRedirect()
   ->end()
   
   ->with('request')->begin()

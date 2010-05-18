@@ -3,7 +3,7 @@
 
 <form action="<?php echo url_for($base_route.'_'.($form->getObject()->isNew() ? 'create' : 'update'), $form->getObject()) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
 <?php if (!$form->getObject()->isNew()): ?>
-	<input type="hidden" name="sf_method" value="put" />
+  <input type="hidden" name="sf_method" value="put" />
 <?php endif; ?>
   <table>
     <tfoot>

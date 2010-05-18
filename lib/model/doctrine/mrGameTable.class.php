@@ -7,7 +7,7 @@ class mrGameTable extends Doctrine_Table
     return Doctrine_Core::getTable('mrGame');
   }
   
-	public function getMediums()
+  public function getMediums()
   {
     $mediums = array(
       'Disc',

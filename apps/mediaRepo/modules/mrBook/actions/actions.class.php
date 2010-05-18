@@ -17,8 +17,8 @@ class mrBookActions extends mrActions
 
   public function executeShow(sfWebRequest $request)
   {
-  	$this->verifyObject();
-  	
+    $this->verifyObject();
+    
     $this->book = $this->getRoute()->getObject();
   }
 
@@ -40,7 +40,7 @@ class mrBookActions extends mrActions
   public function executeEdit(sfWebRequest $request)
   {
     $this->verifyObject();
-  	
+    
     $this->form = new mrBookForm($this->getRoute()->getObject());
   }
 
