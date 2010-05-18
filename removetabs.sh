@@ -1,12 +1,8 @@
 #!/bin/bash
 function remove_tabs {
-  for file in $1; do
-    if [ -f $file ]; then
-      expand --tabs=2 $file > $file.NoTabs; rm $file; mv $file.NoTabs $file;
-    else
-      remove_tabs $file
-    fi
-  done
+  expand --tabs=2 $1 > $1;
 }
 
-remove_tabs $1
+find . \( -name *.php -o -name *.css -o -name *.js -o -name *.yml \) | while read file; do
+  remove_tabs $file
+done

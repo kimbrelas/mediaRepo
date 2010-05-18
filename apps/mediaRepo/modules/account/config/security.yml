@@ -1,5 +1,0 @@
-register:
-  is_secure: false
-  
-registerSubmit:
-  is_secure: false
