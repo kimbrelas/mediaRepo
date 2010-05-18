@@ -14,15 +14,15 @@
       <td><?php echo $music->artist ?></td>
     </tr>
     <tr>
-      <th>Songs:</th>
-      <td>
-        <ul id="sortable">
-          <?php foreach($music->Songs as $song): ?>
-            <li id="<?php echo $song->id; ?>"><?php echo link_to('X', url_for('songs_delete', array('sf_subject' => $song, 'status' => $status)), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?> <?php echo $song->name; ?></li>
-          <?php endforeach; ?>
-        </ul>
-        <a href="<?php echo url_for($base_route.'_addSong', $music) ?>">Add Song</a>
-      </td>
+    	<th>Songs:</th>
+    	<td>
+    		<ul id="sortable">
+	    		<?php foreach($music->Songs as $song): ?>
+	    			<li id="<?php echo $song->id; ?>"><?php echo link_to('X', url_for('songs_delete', array('sf_subject' => $song, 'status' => $status)), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?> <?php echo $song->name; ?></li>
+	    		<?php endforeach; ?>
+	    	</ul>
+    		<a href="<?php echo url_for($base_route.'_addSong', $music) ?>">Add Song</a>
+    	</td>
     </tr>
 </table>
 
@@ -33,15 +33,15 @@
 <a href="<?php echo url_for($base_route) ?>">List</a>
 
 <script type="text/javascript">
-  $(function() {
-    $("#sortable").sortable({
-      update: function(event, ui) {
-        $.post(
-          "<?php echo url_for($base_route.'_orderSongs', $music) ?>",
-          { songs: $('#sortable').sortable('toArray') }
-        );  
-      }
-    });
-    $("#sortable").disableSelection();
-  });
+	$(function() {
+		$("#sortable").sortable({
+			update: function(event, ui) {
+				$.post(
+					"<?php echo url_for($base_route.'_orderSongs', $music) ?>",
+					{ songs: $('#sortable').sortable('toArray') }
+				);	
+			}
+		});
+		$("#sortable").disableSelection();
+	});
 </script>

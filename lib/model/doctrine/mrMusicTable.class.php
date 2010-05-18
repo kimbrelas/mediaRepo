@@ -8,7 +8,7 @@ class mrMusicTable extends Doctrine_Table
     return Doctrine_Core::getTable('mrMusic');
   }
   
-  public function getMediums()
+	public function getMediums()
   {
     $mediums = array(
       'CD',

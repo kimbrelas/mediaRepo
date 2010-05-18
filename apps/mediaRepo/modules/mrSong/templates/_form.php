@@ -6,19 +6,19 @@
 <input type="hidden" name="sf_method" value="put" />
 <?php endif; ?>
   <table>
-    <tfoot>
-      <tr>
+  	<tfoot>
+  		<tr>
         <td colspan="2">
-          <?php echo $form->renderHiddenFields(false) ?>
-          <input type="submit" value="Save" />
-        </td>
-      </tr>
-    </tfoot>
-    
-    <tbody>
-      <?php echo $form->renderGlobalErrors() ?>
-      
-      <?php echo $form['name']->renderRow() ?>
-    </tbody>
-  </table>
+        	<?php echo $form->renderHiddenFields(false) ?>
+					<input type="submit" value="Save" />
+				</td>
+			</tr>
+		</tfoot>
+		
+		<tbody>
+    	<?php echo $form->renderGlobalErrors() ?>
+    	
+			<?php echo $form['name']->renderRow() ?>
+		</tbody>
+	</table>
 </form>

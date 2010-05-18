@@ -6,7 +6,7 @@ $browser = new mrTestFunctional(new sfBrowser());
 
 $browser->login()
 
-  ->get('/music')
+	->get('/music')
 
   ->with('request')->begin()
     ->isParameter('module', 'mrMusic')
@@ -26,23 +26,23 @@ $browser->login()
   ->end()
   
   ->with('response')->begin()
-    ->isStatusCode(200)
+  	->isStatusCode(200)
   ->end()
   
   ->click('Save', array('mr_music' => array('name' => 'In the Aeroplane Over the Sea', 'medium' => 'CD', 'year' => '1998', 'artist' => 'Neutral Milk Hotel')))
   
   ->with('form')->begin()
-    ->hasErrors(0)
+  	->hasErrors(0)
   ->end()
-  
+	
   ->with('request')->begin()
     ->isParameter('module', 'mrMusic')
     ->isParameter('action', 'create')
   ->end()
   
   ->with('response')->begin()
-    ->isStatusCode(302)
-    ->isRedirected()->followRedirect()
+  	->isStatusCode(302)
+  	->isRedirected()->followRedirect()
   ->end()
   
   ->with('request')->begin()
@@ -92,23 +92,23 @@ $browser->login()
   ->end()
   
   ->with('response')->begin()
-    ->isStatusCode(200)
+  	->isStatusCode(200)
   ->end()
   
   ->click('Save', array('mr_music' => array('name' => 'Fang Island', 'medium' => 'Digital', 'year' => '2010', 'artist' => 'Fang Island')))
   
   ->with('form')->begin()
-    ->hasErrors(0)
+  	->hasErrors(0)
   ->end()
-  
+	
   ->with('request')->begin()
     ->isParameter('module', 'mrMusic')
     ->isParameter('action', 'create')
   ->end()
   
   ->with('response')->begin()
-    ->isStatusCode(302)
-    ->isRedirected()->followRedirect()
+  	->isStatusCode(302)
+  	->isRedirected()->followRedirect()
   ->end()
   
   ->with('request')->begin()

@@ -12,25 +12,25 @@
  */
 class mrMusic extends BasemrMusic
 {
-  public function orderSongs($songs)
-  {
-    $songs = array_flip($songs);
-    
-    foreach($this->Songs as $song)
-    {
-      $song->position = $songs[$song->id] + 1;
-      $song->save();
-    }
-  }
-  
-  public function getNewSongPosition()
-  {
-    $song = Doctrine_Query::create()
-      ->from('mrSong')
-      ->where('album_id = ?', $this->id)
-      ->orderBy('position DESC')
-      ->fetchOne();
-      
-    return ($song) ? $song->position + 1 : 1;
-  }
+	public function orderSongs($songs)
+	{
+		$songs = array_flip($songs);
+		
+		foreach($this->Songs as $song)
+  	{
+  		$song->position = $songs[$song->id] + 1;
+  		$song->save();
+  	}
+	}
+	
+	public function getNewSongPosition()
+	{
+		$song = Doctrine_Query::create()
+			->from('mrSong')
+			->where('album_id = ?', $this->id)
+			->orderBy('position DESC')
+			->fetchOne();
+			
+		return ($song) ? $song->position + 1 : 1;
+	}
 }
