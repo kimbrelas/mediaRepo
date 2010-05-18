@@ -1,0 +1,15 @@
+mrBook:
+  mrBook1:
+    name:   Fixtures book
+    medium: Hardback
+    status: owned
+    year:   1999
+    author: Fixtures
+    User:   sfGuardUser1
+  mrBook2:
+    name:   Fixtures wishlist book
+    medium: Hardback
+    status: wishlist
+    year:   1999
+    author: Fixtures
+    User:   sfGuardUser1

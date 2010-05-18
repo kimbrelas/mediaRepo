@@ -1,0 +1,15 @@
+mrGame:
+  mrGame1:
+    name:     Fixtures game
+    medium:   Disc
+    status:   owned
+    year:     1999
+    platform: Playstation 3
+    User:     sfGuardUser1
+  mrGame2:
+    name:     Fixtures wishlist game
+    medium:   Disc
+    status:   wishlist
+    year:     1999
+    platform: Playstation 3
+    User:     sfGuardUser1

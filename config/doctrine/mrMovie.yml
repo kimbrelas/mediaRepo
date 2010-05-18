@@ -1,0 +1,13 @@
+mrMovie:
+  inheritance:
+    type: concrete
+    extends: mrMedia
+  columns:
+    format:  string(255)
+  relations:
+    User:
+      class:        sfGuardUser
+      local:        user_id
+      foreign:      id
+      foreignAlias: Movies
+      onDelete:     cascade

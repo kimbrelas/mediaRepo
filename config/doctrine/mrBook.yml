@@ -1,0 +1,13 @@
+mrBook:
+  inheritance:
+    type: concrete
+    extends: mrMedia
+  columns:
+    author:   string(255)
+  relations:
+    User:
+      class:        sfGuardUser
+      local:        user_id
+      foreign:      id
+      foreignAlias: Books
+      onDelete:     cascade

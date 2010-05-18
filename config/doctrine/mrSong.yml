@@ -1,0 +1,14 @@
+mrSong:
+  options:
+    orderBy: position ASC
+  columns:
+    name:     string(255)
+    album_id: integer(8)
+    position: integer(4)
+  relations:
+    Album:
+      class:        mrMusic
+      local:        album_id
+      foreign:      id
+      foreignAlias: Songs
+      onDelete:     cascade

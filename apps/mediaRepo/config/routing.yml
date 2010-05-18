@@ -1,0 +1,103 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+# default rules
+homepage:
+  url:   /
+  param: { module: account, action: index }
+
+account:
+  url:   /account
+  param: { module: account, action: index }
+
+books:
+  class: sfDoctrineRouteCollection
+  options:
+    model:       mrBook
+    module:      mrBook
+    prefix_path: /books
+    
+books_wishlist:
+  class: sfDoctrineRouteCollection
+  options:
+    model:       mrBook
+    module:      mrBook
+    prefix_path: /books/wishlist
+
+games:
+  class: sfDoctrineRouteCollection
+  options:
+    model:       mrGame
+    module:      mrGame
+    prefix_path: /games
+
+games_wishlist:
+  class: sfDoctrineRouteCollection
+  options:
+    model:       mrGame
+    module:      mrGame
+    prefix_path: /games/wishlist
+
+movies:
+  class: sfDoctrineRouteCollection
+  options:
+    model:       mrMovie
+    module:      mrMovie
+    prefix_path: /movies
+
+movies_wishlist:
+  class: sfDoctrineRouteCollection
+  options:
+    model:       mrMovie
+    module:      mrMovie
+    prefix_path: /movies/wishlist
+
+music:
+  class: sfDoctrineRouteCollection
+  options:
+    model:       mrMusic
+    module:      mrMusic
+    prefix_path: /music
+    object_actions: { addSong: get, addSongSubmit: post, orderSongs: post }
+
+music_wishlist:
+  class: sfDoctrineRouteCollection
+  options:
+    model:       mrMusic
+    module:      mrMusic
+    prefix_path: /music/wishlist
+    object_actions: { addSong: get, addSongSubmit: post, orderSongs: post }
+
+songs:
+  class: sfDoctrineRouteCollection
+  options:
+    model:       mrSong
+    module:      mrSong
+    prefix_path: /songs
+    actions:     { delete: delete }
+
+process_itunes_xml:
+  url: /process-itunes-xml
+  param: { module: mrMusic, action: processiTunesXml }
+
+register:
+  url:   /register
+  param: { module: account, action: register }
+
+register_submit:
+  url:   /register-submit
+  param: { module: account, action: registerSubmit }
+  requirements:
+    sf_method: [post]
+
+sf_guard_signin:
+  url:   /login
+  param: { module: sfGuardAuth, action: signin }
+
+sf_guard_signout:
+  url:   /logout
+  param: { module: sfGuardAuth, action: signout }
+
+sf_guard_password:
+  url:   /request_password
+  param: { module: sfGuardAuth, action: password }
